@@ -1,0 +1,1635 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>资料分析真题化训练 · 行测考点全覆盖练习工具</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231e3a5f'/%3E%3Cpath d='M8 20.5c1.6-4.5 4.3-6.9 8.2-7.4l-1.4-3.2 2-.9 1.9 3.7c2.8.2 5 1.7 6.6 4.4l-2.3 1.1c-1.6-2-3.4-3-5.3-2.9l2.4 4.9-2.2.7L9.5 15c-.6 1.8-.8 3.6-.6 5.5z' fill='%23f97316'/%3E%3C/svg%3E">
+<style>
+:root{
+  --bg:#f3f5f9; --card:#ffffff; --ink:#17233b; --sub:#5b6b83; --line:#e3e8f0;
+  --blue:#1e3a5f; --blue2:#2f5c8f; --accent:#f97316; --accent2:#fb923c;
+  --green:#16a34a; --red:#dc2626; --amber:#d97706; --radius:14px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:"PingFang SC","Microsoft YaHei","Noto Sans CJK SC",system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased}
+.wrap{max-width:960px;margin:0 auto;padding:14px 14px 60px}
+/* ===== 顶部导航 ===== */
+header{background:linear-gradient(135deg,#16283f 0%,var(--blue) 60%,var(--blue2) 100%);color:#fff;border-radius:0 0 18px 18px;padding:22px 16px 16px;margin:-14px -14px 0}
+.hd-top{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.hd-logo{width:34px;height:34px;flex:0 0 34px}
+.hd-title{font-size:19px;font-weight:800;letter-spacing:.5px}
+.hd-sub{font-size:12.5px;opacity:.82;margin-top:2px}
+nav{display:flex;gap:6px;flex-wrap:wrap;margin-top:14px}
+nav button{flex:1;min-width:70px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);color:#fff;padding:8px 6px;border-radius:10px;font-size:13px;cursor:pointer;transition:.2s;font-family:inherit}
+nav button.active{background:#fff;color:var(--blue);font-weight:700;border-color:#fff}
+nav button:hover{background:rgba(255,255,255,.22)}
+/* ===== 卡片与通用 ===== */
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px;margin:14px 0;box-shadow:0 2px 8px rgba(23,35,59,.05)}
+.card h2{font-size:16px;font-weight:800;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.card h2 .bar{width:4px;height:18px;background:var(--accent);border-radius:2px;display:inline-block}
+.badge{display:inline-block;font-size:11.5px;padding:2px 9px;border-radius:999px;font-weight:600;vertical-align:middle}
+.badge.zhen{background:#eef4ff;color:var(--blue2);border:1px solid #cddfff}
+.badge.gaib{background:#fff7ed;color:var(--amber);border:1px solid #fed7aa}
+.badge.point{background:#f1f5f9;color:#475569;border:1px solid #e2e8f0}
+.btn{display:inline-block;border:none;border-radius:10px;padding:10px 20px;font-size:14.5px;font-weight:700;cursor:pointer;font-family:inherit;transition:.18s;text-align:center}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{background:#ea6a10;transform:translateY(-1px)}
+.btn-blue{background:var(--blue);color:#fff}
+.btn-blue:hover{background:var(--blue2)}
+.btn-ghost{background:#f1f5f9;color:var(--ink);border:1px solid var(--line)}
+.btn-ghost:hover{background:#e2e8f0}
+.btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.btn-block{display:block;width:100%}
+/* ===== 设置页 ===== */
+.set-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.set-card{background:#f8fafc;border:1px solid var(--line);border-radius:12px;padding:14px}
+.set-card h3{font-size:13.5px;font-weight:700;margin-bottom:10px;color:var(--blue)}
+.opt-row{display:flex;flex-wrap:wrap;gap:8px}
+.opt{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1.5px solid var(--line);border-radius:9px;padding:6px 12px;font-size:13px;cursor:pointer;transition:.15s;user-select:none}
+.opt input{accent-color:var(--accent)}
+.opt.sel{border-color:var(--accent);background:#fff7ed;font-weight:600}
+.opt:hover{border-color:var(--accent2)}
+.point-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
+.point-item{display:flex;align-items:center;gap:7px;background:#fff;border:1.5px solid var(--line);border-radius:8px;padding:7px 10px;font-size:12.5px;cursor:pointer}
+.point-item.sel{border-color:var(--accent);background:#fff7ed}
+.point-item input{accent-color:var(--accent)}
+.sum-bar{display:flex;align-items:center;gap:10px;background:#fff7ed;border:1px solid #fed7aa;border-radius:10px;padding:10px 14px;margin-top:14px;font-size:13px;color:#92400e}
+.sum-bar b{color:var(--accent)}
+/* ===== 练习页 ===== */
+.quiz-top{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:12px 16px;margin-top:14px;position:sticky;top:0;z-index:20;box-shadow:0 3px 10px rgba(23,35,59,.08)}
+.timer{font-variant-numeric:tabular-nums;font-size:15px;font-weight:800;color:var(--blue)}
+.timer.warn{color:var(--red)}
+.progress{height:6px;background:#e2e8f0;border-radius:3px;overflow:hidden;margin-top:6px}
+.progress i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:3px;transition:width .3s}
+.material-box{background:#f8fafc;border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:14px 0}
+.material-box .m-title{font-size:13px;font-weight:800;color:var(--blue);margin-bottom:8px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.material-box .m-src{font-size:11.5px;color:var(--sub);margin-bottom:10px}
+.material-box .m-body{font-size:14px;color:var(--ink)}
+.material-box .m-body p{margin:6px 0}
+.material-box .m-note{font-size:12px;color:var(--sub);margin-top:8px;font-style:italic}
+table.data{width:100%;border-collapse:collapse;margin:10px 0;font-size:13px;table-layout:fixed}
+table.data th{background:var(--blue);color:#fff;padding:7px 8px;font-weight:600;text-align:center;border:1px solid #2c4c78}
+table.data td{padding:6px 8px;text-align:center;border:1px solid var(--line);background:#fff}
+table.data tr:nth-child(even) td{background:#f8fafc}
+table.data .rowhead{font-weight:700;color:var(--blue);background:#eef4ff !important;text-align:left}
+.chart-fig{display:flex;flex-wrap:wrap;gap:14px;align-items:flex-end;padding:12px 4px 4px}
+.chart-fig .col{display:flex;flex-direction:column;align-items:center;gap:5px;flex:1;min-width:52px}
+.chart-fig .col .bar{width:100%;max-width:56px;background:linear-gradient(180deg,var(--blue2),var(--blue));border-radius:5px 5px 0 0}
+.chart-fig .col .bar.hl{background:linear-gradient(180deg,var(--accent),var(--accent2))}
+.chart-fig .col .v{font-size:10.5px;color:var(--sub)}
+.chart-fig .col .k{font-size:12px;font-weight:700;color:var(--blue)}
+.q-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;margin:12px 0}
+.q-card .q-head{display:flex;gap:10px;align-items:flex-start;margin-bottom:12px}
+.q-num{flex:0 0 auto;width:28px;height:28px;border-radius:8px;background:var(--blue);color:#fff;font-weight:800;font-size:13.5px;display:flex;align-items:center;justify-content:center}
+.q-text{font-size:14.5px;font-weight:600;line-height:1.7}
+.q-point{margin-top:5px}
+.options{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.option{display:flex;align-items:flex-start;gap:8px;border:1.5px solid var(--line);border-radius:10px;padding:10px 12px;font-size:13.5px;cursor:pointer;transition:.15s;background:#fff}
+.option:hover{border-color:var(--accent2)}
+.option .k{font-weight:800;color:var(--blue)}
+.option input{accent-color:var(--accent);margin-top:2px}
+.option.chosen{border-color:var(--accent);background:#fff7ed}
+.option.correct{border-color:var(--green);background:#f0fdf4}
+.option.wrong{border-color:var(--red);background:#fef2f2}
+.option .flag{margin-left:auto;font-size:12px;font-weight:700}
+.option .flag.ok{color:var(--green)}
+.option .flag.no{color:var(--red)}
+.uncertain-row{margin-top:9px;display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--sub)}
+.uncertain-row input{accent-color:var(--amber)}
+.quiz-actions{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
+/* ===== 结果页 ===== */
+.result-hero{display:flex;gap:22px;align-items:center;flex-wrap:wrap;justify-content:center;padding:8px 0 4px}
+.score-ring{width:128px;height:128px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex:0 0 auto;position:relative}
+.score-ring::before{content:"";position:absolute;inset:11px;background:var(--card);border-radius:50%}
+.score-ring .inner{position:relative;z-index:1;text-align:center}
+.score-ring .num{font-size:32px;font-weight:900;color:var(--blue);line-height:1}
+.score-ring .unit{font-size:12px;color:var(--sub)}
+.result-stats{flex:1;min-width:200px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.rstat{background:#f8fafc;border:1px solid var(--line);border-radius:10px;padding:10px 12px;text-align:center}
+.rstat .v{font-size:18px;font-weight:800;color:var(--blue)}
+.rstat .l{font-size:11.5px;color:var(--sub);margin-top:2px}
+.rstat .v.green{color:var(--green)} .rstat .v.red{color:var(--red)}
+.result-msg{text-align:center;font-size:14px;color:var(--sub);margin:6px 0 2px}
+.explain-box{background:#f8fafc;border:1px solid var(--line);border-radius:10px;padding:11px 13px;margin-top:10px;font-size:13px;color:#33415c}
+.explain-box .formula{background:#fff;border:1px dashed #cbd5e1;border-radius:7px;padding:6px 9px;margin:6px 0;font-weight:600;color:var(--blue);font-size:13px}
+.explain-box .detail{margin-top:5px}
+.explain-box .ans-line{font-weight:700}
+.explain-box .ans-line.ok{color:var(--green)}
+.explain-box .ans-line.no{color:var(--red)}
+/* ===== 考点图谱 ===== */
+.kp-legend{display:flex;gap:12px;flex-wrap:wrap;font-size:12px;color:var(--sub);margin-bottom:10px}
+.kp-legend .dot{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:4px}
+.kp-table{width:100%;border-collapse:collapse;font-size:13px}
+.kp-table th{background:var(--blue);color:#fff;padding:8px 10px;text-align:left;font-weight:600}
+.kp-table td{padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:middle}
+.kp-table tr:nth-child(even) td{background:#f8fafc}
+.kp-table .pname{font-weight:700;color:var(--blue)}
+.bar-cell{min-width:120px}
+.bar-cell .bar{height:10px;border-radius:5px;background:#e2e8f0;overflow:hidden}
+.bar-cell .bar i{display:block;height:100%;border-radius:5px;background:var(--accent)}
+.bar-cell .bar i.green{background:var(--green)}
+.bar-cell .bar i.red{background:var(--red)}
+.cover-all{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}
+.cover-all .chip{font-size:12px;padding:4px 10px;border-radius:999px;background:#f1f5f9;border:1px solid var(--line);color:#475569}
+.cover-all .chip.done{background:#f0fdf4;border-color:#86efac;color:var(--green)}
+.cover-all .chip.weak{background:#fef2f2;border-color:#fca5a5;color:var(--red)}
+.cover-all .chip.none{background:#fff7ed;border-color:#fed7aa;color:var(--amber)}
+/* ===== 统计页 ===== */
+.stat-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin:14px 0}
+.stat-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:15px;text-align:center}
+.stat-card .v{font-size:24px;font-weight:900;color:var(--blue)}
+.stat-card .v.accent{color:var(--accent)}
+.stat-card .l{font-size:12px;color:var(--sub);margin-top:3px}
+.hist-list{list-style:none}
+.hist-list li{display:flex;align-items:center;gap:12px;padding:11px 4px;border-bottom:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.hist-list li:last-child{border-bottom:none}
+.hist-list .when{color:var(--sub);font-size:12px;min-width:86px}
+.hist-list .score{font-weight:800;min-width:52px}
+.hist-list .score.hi{color:var(--green)} .hist-list .score.lo{color:var(--red)}
+.hist-list .bar{flex:1;min-width:80px;height:9px;background:#e2e8f0;border-radius:5px;overflow:hidden}
+.hist-list .bar i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:5px}
+.hist-list .tag{font-size:11px;background:#f1f5f9;border-radius:999px;padding:2px 8px;color:#475569}
+.empty-tip{text-align:center;color:var(--sub);padding:26px 10px;font-size:13.5px}
+/* ===== 错题本 ===== */
+.wrong-list .w-item{border:1px solid var(--line);border-radius:12px;padding:13px 15px;margin:10px 0;background:var(--card)}
+.w-item .w-top{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:7px;flex-wrap:wrap}
+.w-item .w-q{font-size:13.5px;font-weight:600}
+.w-item .w-meta{font-size:11.5px;color:var(--sub)}
+.w-item .w-ans{font-size:12.5px;color:var(--red);margin-top:5px}
+.w-item .w-ans b{color:var(--green)}
+/* ===== 底部 ===== */
+footer{text-align:center;color:#8a97ab;font-size:12px;padding:22px 10px 8px;line-height:1.8}
+footer b{color:var(--blue)}
+/* ===== 弹窗 ===== */
+.modal-mask{position:fixed;inset:0;background:rgba(15,23,42,.55);display:none;align-items:center;justify-content:center;z-index:99;padding:18px}
+.modal-mask.show{display:flex}
+.modal{background:#fff;border-radius:16px;padding:22px;max-width:420px;width:100%;text-align:center}
+.modal h3{font-size:17px;font-weight:800;color:var(--blue);margin-bottom:10px}
+.modal p{font-size:13.5px;color:#475569;margin:6px 0}
+.modal .btns{display:flex;gap:10px;margin-top:16px;justify-content:center}
+/* ===== 响应式 ===== */
+@media (max-width:760px){
+  .set-grid{grid-template-columns:1fr}
+  .options{grid-template-columns:1fr}
+  .result-stats{grid-template-columns:repeat(3,1fr)}
+  .hd-title{font-size:17px}
+  .card{padding:14px}
+  .q-card{padding:13px 14px}
+  .quiz-actions .btn{flex:1}
+}
+@media (max-width:420px){
+  .result-stats{grid-template-columns:1fr 1fr}
+  .stat-cards{grid-template-columns:1fr 1fr}
+}
+.view{display:none}
+.view.show{display:block;animation:fadeIn .25s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="hd-top">
+    <svg class="hd-logo" viewBox="0 0 32 32"><rect width="32" height="32" rx="7" fill="rgba(255,255,255,.16)"/><path d="M8 20.5c1.6-4.5 4.3-6.9 8.2-7.4l-1.4-3.2 2-.9 1.9 3.7c2.8.2 5 1.7 6.6 4.4l-2.3 1.1c-1.6-2-3.4-3-5.3-2.9l2.4 4.9-2.2.7L9.5 15c-.6 1.8-.8 3.6-.6 5.5z" fill="#f97316"/></svg>
+    <div>
+      <div class="hd-title">资料分析真题化训练</div>
+      <div class="hd-sub">覆盖全部考点 · 历年真题 + 真题化训练 · 随机分组练习</div>
+    </div>
+  </div>
+  <nav id="nav">
+    <button data-view="setup" class="active">开始练习</button>
+    <button data-view="atlas">考点图谱</button>
+    <button data-view="stats">练习统计</button>
+    <button data-view="wrong">错题本</button>
+  </nav>
+</header>
+
+<!-- ===== 视图：练习设置 ===== -->
+<section id="view-setup" class="view show">
+  <div class="card">
+    <h2><span class="bar"></span>1. 选择题目来源</h2>
+    <div class="set-grid">
+      <div class="set-card">
+        <h3>历年真题（国考 / 联考）</h3>
+        <div class="opt-row" id="srcZhenOpts"></div>
+        <div style="font-size:11.5px;color:var(--sub);margin-top:9px" id="srcZhenInfo"></div>
+      </div>
+      <div class="set-card">
+        <h3>真题化训练（改编 / 原创）</h3>
+        <div class="opt-row" id="srcGaibOpts"></div>
+        <div style="font-size:11.5px;color:var(--sub);margin-top:9px" id="srcGaibInfo"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2><span class="bar"></span>2. 随机分组 · 每组题量</h2>
+    <div class="opt-row" id="numOpts"></div>
+    <div style="font-size:12px;color:var(--sub);margin-top:9px">每组题目将从所选来源中<b style="color:var(--accent)">随机抽取</b>，材料与题目自动配组；再次点击「开始」即为新的一组。</div>
+  </div>
+
+  <div class="card">
+    <h2><span class="bar"></span>3. 选择考点范围（可多选，默认全选）</h2>
+    <div class="point-grid" id="pointOpts"></div>
+    <div class="sum-bar" id="sumBar">已选 <b id="sumN">0</b> 个考点，覆盖 <b id="sumQ">0</b> 道题目</div>
+  </div>
+
+  <button class="btn btn-primary btn-block" id="btnStart" style="margin-top:6px;padding:14px">开始随机分组练习</button>
+  <p style="text-align:center;font-size:12px;color:var(--sub);margin-top:10px">交卷后自动判分 · 每题附考点、公式与解析 · 错题自动进入错题本</p>
+</section>
+
+<!-- ===== 视图：练习中 ===== -->
+<section id="view-quiz" class="view">
+  <div class="quiz-top">
+    <div>
+      <b id="quizLabel" style="font-size:14px">第 1 组</b>
+      <div style="font-size:11.5px;color:var(--sub)" id="quizMeta"></div>
+    </div>
+    <div style="text-align:right">
+      <div class="timer" id="timer">00:00</div>
+      <div style="font-size:11px;color:var(--sub)">用时</div>
+    </div>
+  </div>
+  <div class="progress"><i id="progBar" style="width:0%"></i></div>
+  <div id="quizBody"></div>
+  <div class="card" style="text-align:center">
+    <div class="quiz-actions" style="justify-content:center">
+      <button class="btn btn-ghost" id="btnBack">放弃本组</button>
+      <button class="btn btn-primary" id="btnSubmit" style="min-width:180px">交卷判分</button>
+    </div>
+    <div style="font-size:12px;color:var(--sub);margin-top:8px" id="submitHint"></div>
+  </div>
+</section>
+
+<!-- ===== 视图：结果 ===== -->
+<section id="view-result" class="view">
+  <div class="card">
+    <h2><span class="bar"></span>本组成绩</h2>
+    <div class="result-hero">
+      <div class="score-ring" id="scoreRing" style="background:conic-gradient(var(--accent) 0deg,var(--line) 0deg)">
+        <div class="inner"><div class="num" id="scoreNum">0</div><div class="unit">分 / 100</div></div>
+      </div>
+      <div class="result-stats">
+        <div class="rstat"><div class="v" id="statRight">0</div><div class="l">答对</div></div>
+        <div class="rstat"><div class="v" id="statWrong">0</div><div class="l">答错</div></div>
+        <div class="rstat"><div class="v" id="statTime">00:00</div><div class="l">用时</div></div>
+        <div class="rstat"><div class="v" id="statAcc">0%</div><div class="l">正确率</div></div>
+        <div class="rstat"><div class="v" id="statUnc">0</div><div class="l">拿不准</div></div>
+        <div class="rstat"><div class="v" id="statPts">0</div><div class="l">涉及考点</div></div>
+      </div>
+    </div>
+    <div class="result-msg" id="resultMsg"></div>
+    <div class="quiz-actions" style="justify-content:center;margin-top:14px">
+      <button class="btn btn-primary" id="btnAgain">再来一组</button>
+      <button class="btn btn-ghost" id="btnNewSet">重新设置</button>
+    </div>
+  </div>
+  <div id="resultDetail"></div>
+</section>
+
+<!-- ===== 视图：考点图谱 ===== -->
+<section id="view-atlas" class="view">
+  <div class="card">
+    <h2><span class="bar"></span>考点全覆盖地图</h2>
+    <div class="kp-legend">
+      <span><span class="dot" style="background:var(--green)"></span>已掌握（正确率 ≥ 80%）</span>
+      <span><span class="dot" style="background:var(--amber)"></span>待加强（正确率 50%–80%）</span>
+      <span><span class="dot" style="background:var(--red)"></span>薄弱（正确率 &lt; 50%）</span>
+      <span><span class="dot" style="background:#cbd5e1"></span>未练习</span>
+    </div>
+    <table class="kp-table">
+      <colgroup><col style="width:24%"><col style="width:12%"><col style="width:12%"><col style="width:30%"><col style="width:22%"></colgroup>
+      <thead><tr><th>考点</th><th>题库题量</th><th>已练</th><th>你的正确率</th><th>状态</th></tr></thead>
+      <tbody id="kpBody"></tbody>
+    </table>
+    <div style="font-size:12px;color:var(--sub);margin-top:12px" id="kpNote"></div>
+  </div>
+  <div class="card">
+    <h2><span class="bar"></span>考点覆盖明细</h2>
+    <div class="cover-all" id="coverAll"></div>
+  </div>
+</section>
+
+<!-- ===== 视图：统计 ===== -->
+<section id="view-stats" class="view">
+  <div class="stat-cards">
+    <div class="stat-card"><div class="v" id="stTotal">0</div><div class="l">累计练习（组）</div></div>
+    <div class="stat-card"><div class="v" id="stQ">0</div><div class="l">累计答题</div></div>
+    <div class="stat-card"><div class="v accent" id="stAcc">0%</div><div class="l">平均正确率</div></div>
+    <div class="stat-card"><div class="v" id="stWrongN">0</div><div class="l">错题总数（去重）</div></div>
+  </div>
+  <div class="card">
+    <h2><span class="bar"></span>各考点正确率</h2>
+    <table class="kp-table">
+      <colgroup><col style="width:28%"><col style="width:20%"><col style="width:52%"></colgroup>
+      <thead><tr><th>考点</th><th>正确率</th><th>答题分布</th></tr></thead>
+      <tbody id="kpAccBody"></tbody>
+    </table>
+    <div style="font-size:12px;color:var(--sub);margin-top:12px">统计基于浏览器本地记录，清空缓存会丢失；可点击「导出成绩」保存 JSON。</div>
+  </div>
+  <div class="card">
+    <h2><span class="bar"></span>练习历史</h2>
+    <ul class="hist-list" id="histList"></ul>
+    <div class="quiz-actions" style="margin-top:10px">
+      <button class="btn btn-ghost" id="btnExport">导出成绩</button>
+      <button class="btn btn-ghost" id="btnClearHist">清空记录</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 视图：错题本 ===== -->
+<section id="view-wrong" class="view">
+  <div class="card">
+    <h2><span class="bar"></span>错题本（<span id="wrongCount">0</span>）</h2>
+    <div id="wrongList"></div>
+    <button class="btn btn-blue btn-block" id="btnRetrain" style="margin-top:12px">重新练习全部错题</button>
+  </div>
+</section>
+
+<footer>
+  题库收录 <b id="footQ">0</b> 题 · 覆盖 <b id="footP">0</b> 个考点 · 真题来源标注于每道题
+  <br>练习数据仅保存在本机浏览器（localStorage），不上传任何服务器
+</footer>
+</div>
+
+<!-- ===== 弹窗 ===== -->
+<div class="modal-mask" id="modal">
+  <div class="modal">
+    <h3 id="modalTitle"></h3>
+    <div id="modalBody"></div>
+    <div class="btns">
+      <button class="btn btn-primary" id="modalOk">知道了</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ================= 数据区：题库（材料 + 题目） ================= */
+/* 每道题：{q, opts:[4], ans, point, formula, solve, traps:[{o,why}], key}
+   traps = 资深命题人视角：每个干扰选项对应的典型误区 */
+/* 来源 type: 'zhen' = 历年真题；'gaib' = 真题改编/真题化设计 */
+const RAW = [
+/* ---------- 材料A：2023年国考·集成电路产量（真题改编整理） ---------- */
+{id:'A', title:'全国及部分省市集成电路产量（2016—2021年）', source:'2023年国考（行政执法类）真题·改编整理', type:'gaib',
+ note:'真题考点与数据保留，表格呈现做了校订合并；全国产量序列、北京序列及省市增速数据均取自真题解析。',
+ kind:'table',
+ blocks:[
+  {t:'表1  2016—2021年全国及北京市集成电路产量（亿块）', head:['年份','2016','2017','2018','2019','2020','2021'], rows:[['全国',1318,1565,1853,2018,2614,3594],['北京',81,93,137,154,171,208]]},
+  {t:'表2  部分省市集成电路产量（亿块）', head:['省市','2017年','2018年','2019年'], rows:[['江苏',518,554,516],['广东',281,318,390],['上海',263,301,363],['浙江',233,233,208],['甘肃',80,65,143],['天津',58,77,77]]},
+  {t:'表3  部分省市集成电路产量（亿块，2016年与2021年）', head:['省市','2016年','2021年'], rows:[['甘肃',197,643],['广东',219,539],['上海',238,365],['浙江',74,230]]}
+ ],
+ qs:[
+  {q:'2017—2021年间，全国集成电路产量同比增速超过20%的年份有几个？', opts:['A. 1个','B. 2个','C. 3个','D. 4个'], ans:'B', point:'增长率比较',
+   formula:'判断增速是否超过 r：用“基期量×(1+r) < 现期量”口算',
+   solve:'2017年：1318×1.2≈1581.6＞1565，不超；2018年：1565×1.2≈1878＞1853，不超；2019年：1853×1.2≈2223.6＞2018，不超；2020年：2018×1.2≈2421.6＜2614，超；2021年：2614×1.2≈3136.8＜3594，超。共2个年份（2020、2021），选B。',
+   traps:[
+    {o:'C', why:'把2019年（2018→2019仅+8.9%）误算为超过20%，对2020、2021之外的年份没有逐个验证。'},
+    {o:'A', why:'漏数2020或2021中的某一年——两年增速均超过20%，只数出一个。'},
+    {o:'D', why:'把“超过20%”误理解成“以2016年为基准的总增幅”，用2016年数据比全部年份，属概念偷换。'}],
+   key:'此类“是否超过某增速”的题，不需求精确增速，用“基期×(1+r)与现期比大小”逐年代入即可。'},
+  {q:'表2所列省市中，2019年集成电路产量同比增速超过2%的省市个数，与2018年相比（ ）', opts:['A. 少1个','B. 少2个','C. 多1个','D. 多2个'], ans:'A', point:'增长率比较',
+   formula:'判断“增速＞2%”同样用“基期×1.02 ＜ 现期”；负增长、持平直接排除',
+   solve:'2018年超2%的省市：江苏（554＞518×1.02）、广东（318＞281×1.02）、上海（301＞263×1.02）、北京（137＞93×1.02）、天津（77＞58×1.02），共5个；浙江持平、甘肃下降。2019年超2%的省市：广东（390＞318×1.02）、上海（363＞301×1.02）、甘肃（143＞65×1.02）、北京（154＞137×1.02），共4个；江苏516＜554、浙江208＜233下降，天津持平。5个→4个，少1个，选A。',
+   traps:[
+    {o:'D', why:'把2019年江苏516误判为“仍在增长”（实际较2018年554下降），多算一个。'},
+    {o:'B', why:'把2019年天津“持平（77=77）”误算为超过2%，多算一个，得出少2个。'},
+    {o:'C', why:'漏算2019年甘肃（65→143，增速明显超过2%），得出多1个。'}],
+   key:'“超2%”用基期×1.02与现期比大小；持平与负增长一眼排除，不必精算。'},
+  {q:'2016—2021年间，表3四个省市集成电路产量年均增速最快的是（ ）', opts:['A. 甘肃','B. 广东','C. 上海','D. 浙江'], ans:'A', point:'年均增长率',
+   formula:'年份差相同时，年均增速比较可转化为“末期量÷初期量”比值大小',
+   solve:'甘肃：643÷197≈3.26；广东：539÷219≈2.46；上海：365÷238≈1.53；浙江：230÷74≈3.11。甘肃最大，选A。',
+   traps:[
+    {o:'D', why:'浙江比值3.11与甘肃3.26接近，若只看尾数或估算不精确（如把230÷74≈3.1），会与甘肃混淆。'},
+    {o:'B', why:'广东比值2.46大于上海1.53，容易误以为“广东在四个里最大”，缺少全量比较。'},
+    {o:'C', why:'上海比值最小，命题人用它测试是否把“最快”读成“最慢”的反向干扰。'}],
+   key:'年份差相同，年均增长率与末期/初期比值一一对应；比值可目测排序。'},
+  {q:'2016—2021年间，北京集成电路产量的同比增量最大的年份是（ ）', opts:['A. 2017年','B. 2018年','C. 2020年','D. 2021年'], ans:'B', point:'增长量比较',
+   formula:'增长量 = 现期量 − 基期量',
+   solve:'北京历年增量：2017年 93−81=12；2018年 137−93=44；2019年 154−137=17；2020年 171−154=17；2021年 208−171=37。最大为2018年（44亿块），选B。',
+   traps:[
+    {o:'D', why:'2021年现期量最大（208），误以为“现期大=增量大”，漏减基期。'},
+    {o:'A', why:'2017年增速最快（93÷81≈14.8%），用“增速快”替代“增量大”，概念偷换。'},
+    {o:'C', why:'2020年增量仅17亿块（与2019年相同），为干扰选项。'}],
+   key:'增长量=现期−基期；现期最大≠增量最大，增速最快≠增量最大。'},
+  {q:'2016—2021年间，全国集成电路产量同比增量最大的年份是（ ）', opts:['A. 2018年','B. 2019年','C. 2020年','D. 2021年'], ans:'D', point:'增长量比较',
+   formula:'增长量 = 现期量 − 基期量',
+   solve:'全国历年增量：2017年 1565−1318=247；2018年 1853−1565=288；2019年 2018−1853=165；2020年 2614−2018=596；2021年 3594−2614=980。最大为2021年，选D。',
+   traps:[
+    {o:'C', why:'2020年增量596亿块已不小，容易在2020与2021之间犹豫，需精确算2021年增量980。'},
+    {o:'B', why:'2019年现期量2018略大于2018年，但增量仅165亿块，属于小增量年份。'},
+    {o:'A', why:'2018年增速18.4%较高，用“增速快”替代“增量大”，概念偷换。'}],
+   key:'增长量看差值不看增速；逐年做差后比较，别被“增速快”带偏。'},
+  {q:'2021年，全国集成电路产量较2016年增长约（ ）', opts:['A. 1.3倍','B. 1.7倍','C. 2.0倍','D. 2.7倍'], ans:'B', point:'增长率',
+   formula:'增长率（倍数表达）= 现期量÷基期量 − 1',
+   solve:'3594÷1318≈2.73，增长=2.73−1≈1.7倍，选B。',
+   traps:[
+    {o:'D', why:'直接用3594÷1318≈2.7当答案，忘了“增长X倍”要减1。'},
+    {o:'C', why:'把五年总增速粗估为2.0倍，未精确计算。'},
+    {o:'A', why:'估算偏低（如按1318×2.3粗算），落在1.3倍。'}],
+   key:'“增长几倍”=倍数−1；选项D就是“未减1”的经典陷阱。'},
+ ]
+},
+/* ---------- 材料B：2023年国考·中心城市道路守法率（真题改编整理） ---------- */
+{id:'B', title:'2021年Z省部分中心城市道路守法率（%，三季度/四季度）', source:'2023年国考（行政执法类）真题·改编整理', type:'gaib',
+ note:'真题保留了机动车依法礼让率等核心数据；非机动车、行人、安全带、头盔四列按真题结构校订补全。',
+ kind:'table',
+ blocks:[
+  {t:'表  2021年Z省中心城市道路守法率（%）', head:['城市','礼让率·三','礼让率·四','非机动车·三','非机动车·四','行人·三','行人·四','安全带·三','安全带·四','头盔·三','头盔·四'],
+   rows:[['A市',98.0,98.8,92.5,97.0,95.0,98.4,96.4,99.3,94.6,98.2],['B市',96.0,98.8,95.1,97.5,96.8,98.9,97.8,99.6,96.2,98.7],['C市',99.2,98.0,97.6,98.9,98.6,99.5,99.2,99.8,98.5,99.6],['D市',97.3,99.6,96.2,98.8,97.9,99.4,98.7,99.8,97.8,99.5],['E市',96.5,98.3,93.8,97.4,96.0,98.6,97.5,99.5,95.8,98.8],['F市',96.0,98.2,95.5,98.4,97.2,99.0,98.0,99.1,96.8,98.8],['G市',94.8,100.0,90.9,98.2,93.5,98.3,95.6,99.4,93.0,98.5],['H市',98.2,99.3,97.0,98.6,98.0,99.3,98.8,99.7,97.6,99.2]]}
+ ],
+ qs:[
+  {q:'2021年第四季度，机动车依法礼让率高于第三季度水平的城市有几个？', opts:['A. 6个','B. 7个','C. 8个','D. 9个'], ans:'B', point:'读数与排序比较',
+   formula:'逐城比较“四季度 ＞ 三季度”',
+   solve:'A市98.8＞98.0、B市98.8＞96.0、D市99.6＞97.3、E市98.3＞96.5、F市98.2＞96.0、G市100.0＞94.8、H市99.3＞98.2，共7个；C市98.0＜99.2下降。选B。',
+   traps:[
+    {o:'C', why:'把下降的C市（99.2→98.0）也算进去，漏看了这一个反例。'},
+    {o:'D', why:'直接数8个城市不逐项比较，想当然认为全部上升。'},
+    {o:'A', why:'漏数H市（98.2→99.3）或D市等某一城，读数不细。'}],
+   key:'“高于上季度”必须逐城验证；材料里故意埋一个下降城市（C市）作为陷阱。'},
+  {q:'2021年第四季度，非机动车遵守交通信号灯率最低的市，其四季度该项指标比上季度（ ）', opts:['A. 上升不到5个百分点','B. 上升超过5个百分点','C. 下降不到5个百分点','D. 下降超过5个百分点'], ans:'B', point:'两期比重',
+   formula:'百分点 = 两个百分数直接相减',
+   solve:'三季度非机动车信号灯率最低的是G市（90.9%），四季度升至98.2%，上升98.2%−90.9%=7.3个百分点，选B。',
+   traps:[
+    {o:'A', why:'“最低市”定位错误——若找成B市（95.1→97.5，上升2.4个百分点），就落入“上升不到5个百分点”。'},
+    {o:'C', why:'方向判断错：把上升看成下降。'},
+    {o:'D', why:'既方向错又数值错，双重干扰。'}],
+   key:'先定位“最低”城市（G市三季度90.9），再做差；百分点就是百分数直接加减。'},
+  {q:'与第三季度相比，2021年第四季度B市五项道路守法率指标中变化幅度最大的是（ ）', opts:['A. 机动车依法礼让率','B. 非机动车遵守交通信号灯率','C. 行人遵守交通信号灯率','D. 汽车前排驾乘人员安全带使用率'], ans:'A', point:'和差计算',
+   formula:'变化幅度 = |四季度 − 三季度|',
+   solve:'B市各指标变化：礼让率96.0→98.8（+2.8）；非机动车95.1→97.5（+2.4）；行人96.8→98.9（+2.1）；安全带97.8→99.6（+1.8）；头盔96.2→98.7（+2.5）。最大为礼让率，选A。',
+   traps:[
+    {o:'B', why:'非机动车+2.4与礼让率+2.8接近，只算到“比较大”就选，未做全量比较。'},
+    {o:'D', why:'安全带变化最小（+1.8），命题人用“变化幅度”测试是否反向选择。'},
+    {o:'C', why:'行人+2.1为中间值干扰项。'}],
+   key:'“变化幅度”=差值的绝对值大小，逐项算差再比较。'},
+  {q:'2021年第四季度，下列城市中，五项道路守法率指标大小排序为“安全带使用率＞行人信号灯率＞非机动车信号灯率＝头盔佩戴率＞礼让率”的是（ ）', opts:['A. C市','B. E市','C. F市','D. H市'], ans:'C', point:'读数与排序比较',
+   formula:'按排序要求逐市核对，先抓住“非机动车＝头盔”这一关键等号排除',
+   solve:'F市四季度：安全带99.1＞行人99.0＞非机动车98.8＝头盔98.8＞礼让98.2，完全符合，选C。C市头盔99.6＞非机动车98.9（等号被破坏）；E市非机动车97.4≠头盔98.8；H市礼让99.3＞非机动车98.6（顺序倒置）。',
+   traps:[
+    {o:'A', why:'C市“头盔＞非机动车”，破坏“＝”号，快速排除点。'},
+    {o:'B', why:'E市“非机动车≠头盔”，同样破坏等号。'},
+    {o:'D', why:'H市“礼让＞非机动车”，把末两位顺序写反。'}],
+   key:'先核对最容易破坏的等号关系（非机动车=头盔），可秒排三四个选项。'},
+  {q:'与第三季度相比，2021年第四季度G市五项道路守法率指标中上升幅度最大的是（ ）', opts:['A. 机动车依法礼让率','B. 非机动车遵守交通信号灯率','C. 行人遵守交通信号灯率','D. 摩托车安全头盔佩戴率'], ans:'B', point:'和差计算',
+   formula:'上升幅度 = 四季度 − 三季度（取正值）',
+   solve:'G市各指标变化：礼让率94.8→100.0（+5.2）；非机动车90.9→98.2（+7.3）；行人93.5→98.3（+4.8）；安全带95.6→99.4（+3.8）；头盔93.0→98.5（+5.5）。最大为非机动车（+7.3个百分点），选B。',
+   traps:[
+    {o:'A', why:'礼让率升至100.0%最醒目，误以为“满分=上升最大”，未逐项算差。'},
+    {o:'C', why:'行人98.3与头盔98.5接近，粗略比较时容易混淆。'},
+    {o:'D', why:'头盔+5.5仅次于非机动车，是第二大项，干扰力最强。'}],
+   key:'“上升幅度”比的是差值不是最终数值；G市非机动车从90.9涨到98.2，差值最大。'},
+  {q:'2021年第四季度，Z省8个中心城市汽车前排驾乘人员安全带使用率的平均值约为（ ）', opts:['A. 99.0%','B. 99.3%','C. 99.5%','D. 99.8%'], ans:'C', point:'现期平均数',
+   formula:'平均数 = 各市之和 ÷ 城市个数',
+   solve:'8市四季度安全带使用率之和=99.3+99.6+99.8+99.8+99.5+99.1+99.4+99.7=796.2；796.2÷8≈99.5%，选C。',
+   traps:[
+    {o:'D', why:'直接取最大城市C、D市的99.8%当平均，忽略其他城市。'},
+    {o:'B', why:'漏算一两个城市（如漏A市99.3），平均被压低到99.3%。'},
+    {o:'A', why:'把三季度数据混入或加减失误，明显偏低。'}],
+   key:'平均数先把8个值加总再除8；用“基准值法”以99.5为基准口算偏差更快。'},
+ ]
+},
+/* ---------- 材料C：2023年国考·木材进口（真题） ---------- */
+{id:'C', title:'2017—2021年我国木材进口情况', source:'2023年国考（行政执法类）真题', type:'zhen',
+ note:'',
+ kind:'chart',
+ blocks:[
+  {t:'图1  2017—2021年我国木材进口量（万吨）与进口额（亿美元）',
+   chart:'bars', items:[{k:'2017',v:2390,e:96.9},{k:'2018',v:2370,e:97.8},{k:'2019',v:2350,e:83.1},{k:'2020',v:2110,e:74.4},{k:'2021',v:1890,e:78.6}]},
+  {t:'图2  2021年进口木材种类构成（万吨）', chart:'pie', total:1892, items:[['松木',575],['冷杉',432],['针叶木材',209],['其他木材',676]]},
+  {t:'图3  2021年木材进口来源（万吨）', chart:'pie', total:1892, items:[['俄罗斯',929],['美国',90],['其他国家',873]]}
+ ],
+ qs:[
+  {q:'2017—2021年间，我国木材进口单价（进口额÷进口量）超过400美元/吨的年份有几个？', opts:['A. 1个','B. 2个','C. 3个','D. 4个'], ans:'C', point:'现期平均数',
+   formula:'判断“进口额÷进口量＞400美元/吨” ⇔ “进口额(亿美元)×10⁴ ＞ 进口量(万吨)×400”',
+   solve:'2017年：96.9×10⁴=969000＞2390×400=956000 ✓；2018年：97.8×10⁴=978000＞2370×400=948000 ✓；2019年：83.1×10⁴=831000＜2350×400=940000 ✗；2020年：74.4×10⁴=744000＜2110×400=844000 ✗；2021年：78.6×10⁴=786000＞1890×400=756000 ✓。共3年，选C。',
+   traps:[
+    {o:'B', why:'2021年单价78.6÷1890≈415.9美元/吨，仅略超400，估算不细时容易漏掉这一年。'},
+    {o:'A', why:'只看到2017年单价最高，未逐年验证。'},
+    {o:'D', why:'把2019或2020年也算进去——若直接用96.9÷2390≈40.5（美元/吨）之类的数字比较，就是单位换算错误。'}],
+   key:'单位换算题：亿美元×10⁴ → 万美元，万吨 → 吨；避免“40.5”这类数量级陷阱。'},
+  {q:'2017—2021年，我国木材进口量合计约为（ ）', opts:['A. 0.9亿吨','B. 1.1亿吨','C. 1.3亿吨','D. 1.5亿吨'], ans:'B', point:'和差计算',
+   formula:'逐年相加；高位叠加或截位估算',
+   solve:'2390+2370+2350+2110+1890=11110万吨≈1.1亿吨，选B。',
+   traps:[
+    {o:'A', why:'漏算2021年（1890万吨），只加四年得9220万吨≈0.9亿吨。'},
+    {o:'C', why:'求和误差或把某一年数据重复计入。'},
+    {o:'D', why:'估算偏大（如把2110万吨误读为更高量级）。'}],
+   key:'注意单位换算：11110万吨=1.1亿吨，别多写或少写一个数量级。'},
+  {q:'2021年，松木、冷杉和针叶木材进口量之和约占我国木材进口总量的（ ）', opts:['A. 54%','B. 59%','C. 64%','D. 69%'], ans:'C', point:'现期比重',
+   formula:'比重 = 部分量 ÷ 整体量',
+   solve:'(575+432+209)÷1892=1216÷1892≈64.3%，选C。',
+   traps:[
+    {o:'A', why:'只算松木+冷杉（1007÷1892≈53%），漏加针叶木材209万吨。'},
+    {o:'B', why:'分子相加正确但分母取错（如误用1916或更高），或因截位方向偏小。'},
+    {o:'D', why:'分母估算偏小（如把1892看成≈1760），导致比重虚高。'}],
+   key:'比重题先确认“部分”包含几项，别漏项；分母用总进口量1892。'},
+  {q:'2021年，我国自俄罗斯进口的木材占木材进口总量的比重，约比自美国进口的高（ ）', opts:['A. 33个百分点','B. 39个百分点','C. 44个百分点','D. 49个百分点'], ans:'C', point:'现期比重',
+   formula:'两比重之差 = (部分A−部分B) ÷ 整体',
+   solve:'(929−90)÷1892=839÷1892≈44.4%，即高约44个百分点，选C。',
+   traps:[
+    {o:'D', why:'只算俄罗斯占比929÷1892≈49%，忘记再减美国占比（即不减90）。'},
+    {o:'B', why:'分母取错或估算误差，比重差被压低到39%。'},
+    {o:'A', why:'运算方向/数值偏差更大（如分子用错为839÷2580）。'}],
+   key:'两个比重作差，可合并分子直接算(929−90)/1892，一步到位。'},
+  {q:'2018—2021年，我国木材进口额同比增量的变化趋势是（ ）', opts:['A. 逐年上升','B. 先上升后下降再上升','C. 先下降后上升','D. 先下降后上升再下降'], ans:'B', point:'增长量比较',
+   formula:'增量 = 现期量 − 基期量',
+   solve:'2018年：97.8−96.9=+0.9（上升）；2019年：83.1−97.8=−14.7（下降）；2020年：74.4−83.1=−8.7（仍下降但降幅收窄）；2021年：78.6−74.4=+4.2（回升）。趋势为升→降→升，选B。',
+   traps:[
+    {o:'C', why:'忽略2018年微升（+0.9亿美元），误以为从2019年才开始转折。'},
+    {o:'D', why:'把2020年“降幅收窄”（−8.7）当成仍在下降途中，未意识到2021年已转正。'},
+    {o:'A', why:'趋势方向完全反了，属粗心/排序错误。'}],
+   key:'求增量要逐年做差；注意“降幅收窄”也是下降，趋势拐点在2021年转正。'},
+  {q:'2017—2021年，我国木材进口量年均减少约（ ）万吨', opts:['A. 100','B. 125','C. 150','D. 175'], ans:'B', point:'年均增长量',
+   formula:'年均增长量 = (末期量 − 初期量) ÷ 年份差；年份差 = 末期年份 − 初期年份',
+   solve:'(2390−1890)÷(2021−2017)=500÷4=125万吨/年，选B。',
+   traps:[
+    {o:'A', why:'年份差算成5年（把2017—2021数成5个年份），500÷5=100。'},
+    {o:'C', why:'减法或除法估算误差，结果被抬高到150。'},
+    {o:'D', why:'用错起止年份（如用2020年2110做末期），数值虚高。'}],
+   key:'年均增长量的年份差=末期年份−初期年份（4年），不是“数了几个年份”。'},
+  {q:'2021年，我国进口的松木约是针叶木材进口量的（ ）倍', opts:['A. 1.8','B. 2.2','C. 2.75','D. 3.3'], ans:'C', point:'现期倍数',
+   formula:'倍数 = 部分A ÷ 部分B',
+   solve:'575÷209≈2.75倍，选C。',
+   traps:[
+    {o:'D', why:'估算偏高（如把分母按175计），把2.75抬到3.3。'},
+    {o:'B', why:'截位时分子缩小（如575→500），得到2.2~2.4的低估值。'},
+    {o:'A', why:'把松木与冷杉混淆（575÷432≈1.33），落点偏差大。'}],
+   key:'倍数=575/209≈2.75；注意别拿错分子（松木575 vs 冷杉432）。'},
+  {q:'2021年，我国木材进口额占2017—2021年五年进口额之和的比重约为（ ）', opts:['A. 15%','B. 18%','C. 21%','D. 24%'], ans:'B', point:'现期比重',
+   formula:'比重 = 2021年进口额 ÷ 五年进口额之和',
+   solve:'五年进口额之和=96.9+97.8+83.1+74.4+78.6=430.8亿美元；78.6÷430.8≈18.2%，选B。',
+   traps:[
+    {o:'C', why:'估算偏高（如分母按370计或漏加一年），落在21%。'},
+    {o:'A', why:'把2021年进口额看错（如用74.4）或分母算大，偏到15%。'},
+    {o:'D', why:'分母少算一年（如漏2020年74.4），比重虚高到24%。'}],
+   key:'先加总五年进口额430.8，再做除法；漏加年份是这类题的高频失误。'},
+ ]
+},
+/* ---------- 材料D：2023年国考·纺织品服装出口（真题·文字材料） ---------- */
+{id:'D', title:'2021年我国纺织品服装出口情况', source:'2023年国考（行政执法类）真题', type:'zhen',
+ note:'',
+ kind:'text',
+ blocks:[
+  {t:'文字材料',
+   text:'2021年，全国纺织品服装出口3155亿美元，同比增长8.4%。其中，服装出口1702.8亿美元，同比增长24.0%，较2019年增长16.0%。\n\n2021年，中国对美国出口纺织品服装563.5亿美元，同比增长4.0%；向东盟十国出口491.2亿美元，同比增长24.9%；对欧盟27国出口469.9亿美元，同比下降11.1%；对日本出口200.3亿美元，同比下降7.2%。\n\n2021年，纺织制品中，防疫类口罩出口额为129.5亿美元，出口金额、数量同比分别下降76.0%和13.0%；除防疫类口罩外，其他纺织制品出口额为517.2亿美元，同比增长27.5%。\n\n2021年，中国向“一带一路”沿线国家出口纺织品服装1137.9亿美元，同比增长24.5%，较2019年增长17.3%；中国自“一带一路”沿线国家进口纺织品服装131.6亿美元，同比增长24.5%。'}
+ ],
+ qs:[
+  {q:'2020年，中国服装出口额同比（ ）', opts:['A. 增长不足2%','B. 增长2%—4%','C. 下降6%—8%','D. 下降8%以上'], ans:'C', point:'隔年增长率',
+   formula:'间隔增长率 R = r₁ + r₂ + r₁×r₂；已知 R（2021较2019）与 r₁（2021同比），反求 r₂',
+   solve:'2021年较2019年增长16%（间隔增长率R），2021年同比增速24%（r₁），则2020年同比增速 r₂=(R−r₁)/(1+r₁)=(16%−24%)/(1+24%)=−8%÷1.24≈−6.45%，即下降约6.5%，落在“下降6%—8%”，选C。',
+   traps:[
+    {o:'A', why:'方向错：2021年同比大增24%但两年累计仅+16%，说明2020年必然下降——若想当然认为2020年也在增长即落入此选项。'},
+    {o:'B', why:'同A，方向错误且数值偏小。'},
+    {o:'D', why:'直接用16%−24%=−8%当答案，漏除以(1+24%)——这是间隔增长率反求最常见的丢分点。'}],
+   key:'间隔增长率反求公式：r₂=(R−r₁)/(1+r₁)，分母(1+r₁)不能丢。'},
+  {q:'2021年，中国针织服装及衣着附件出口额与梭织服装及衣着附件出口额之和，约占全国纺织品服装出口总额的（ ）', opts:['A. 40%','B. 45%','C. 50%','D. 55%'], ans:'C', point:'现期比重',
+   formula:'比重 = (针织＋梭织) ÷ 纺织品服装出口总额',
+   solve:'(864.8+701.2)÷3155=1566÷3155≈49.6%，选C。',
+   traps:[
+    {o:'B', why:'估算时分子或分母截位方向偏小（如1566/3200≈49%，反向取小）。'},
+    {o:'D', why:'分母误用“服装出口1702.8亿美元”或估算偏高，比重被抬到55%。'},
+    {o:'A', why:'漏加一项或分子少算（如只用864.8），明显偏低。'}],
+   key:'看清整体是“纺织品服装出口3155亿”，不是“服装出口1702.8亿”。'},
+  {q:'2021年，中国对美国、东盟十国、欧盟27国、日本的纺织品服装出口额同比增量，从大到小排序正确的是（ ）', opts:['A. 美国＞东盟＞日本＞欧盟','B. 东盟＞美国＞日本＞欧盟','C. 美国＞东盟＞欧盟＞日本','D. 东盟＞美国＞欧盟＞日本'], ans:'B', point:'增长量比较',
+   formula:'增量 ≈ 现期量 × 增速；一正一负先按正负分类',
+   solve:'美国：563.5×4%≈22.5亿美元；东盟：491.2×24.9%≈122.3亿美元；欧盟：−469.9×11.1%≈−52.2亿美元；日本：−200.3×7.2%≈−14.4亿美元。排序：东盟＞美国＞日本（−14.4）＞欧盟（−52.2），选B。',
+   traps:[
+    {o:'A', why:'只看“现期量大”就选美国第一——“大大则大”要求量大且增速也大，美国增速仅4%，乘积反而小。'},
+    {o:'C', why:'欧盟、日本顺序颠倒：日本(−14.4)应排在欧盟(−52.2)之前。'},
+    {o:'D', why:'美国与东盟顺序错，同时欧盟日本顺序也错，双重错误。'}],
+   key:'增长量比较口诀“大大则大、一大一小看乘积”；先分正负（欧盟、日本为负），负数内部比绝对值小的在前。'},
+  {q:'2020年，防疫类口罩出口额占出口纺织制品的比重约为（ ）', opts:['A. 40%','B. 45%','C. 55%','D. 60%'], ans:'C', point:'基期比重',
+   formula:'基期比重 = 基期部分量 ÷ (基期部分量＋基期其他部分量)；基期量 = 现期量÷(1+增速)',
+   solve:'口罩2020年出口额：129.5÷(1−76%)=129.5÷0.24≈539.6亿美元；其他纺织制品2020年出口额：517.2÷(1+27.5%)≈405.6亿美元。比重=539.6÷(539.6+405.6)≈57.1%，选C。',
+   traps:[
+    {o:'D', why:'基期口罩额算对但整体估算偏小（如分母取900），比重虚高到60%。'},
+    {o:'B', why:'基期口罩额计算错误（如误用129.5÷0.76≈170或129.5×76%），把比重压低到45%附近。'},
+    {o:'A', why:'直接用现期数值（129.5与517.2）算比重，完全忽略“基期”与76%降幅。'}],
+   key:'先各自求基期额（注意“下降76%”要÷(1−76%)），再算基期比重。'},
+  {q:'2020年，中国对“一带一路”沿线国家纺织品服装贸易顺差约为（ ）亿美元', opts:['A. 500','B. 700','C. 800','D. 900'], ans:'C', point:'基期量和差',
+   formula:'贸易顺差 = 出口额 − 进口额；增速相同时可直接 (现期差)÷(1+r)',
+   solve:'2020年出口：1137.9÷1.245≈913.8亿美元；2020年进口：131.6÷1.245≈105.7亿美元；顺差≈913.8−105.7=808.1亿美元，选C。（因出口、进口增速相同均为24.5%，也可用现期顺差1006.3÷1.245≈808。）',
+   traps:[
+    {o:'D', why:'直接用现期顺差1137.9−131.6=1006.3，未折算到基期（或估算偏大）。'},
+    {o:'B', why:'基期出口额估算偏低（如把913.8算成805）或减法出错。'},
+    {o:'A', why:'计算严重偏差（如用错增速1.345或相减方向错）。'}],
+   key:'出口、进口增速相同，直接(现期顺差)÷(1+r)一步到位；别用“现期顺差”当答案。'},
+  {q:'2021年，中国服装出口额约占全国纺织品服装出口总额的（ ）', opts:['A. 49%','B. 54%','C. 59%','D. 64%'], ans:'B', point:'现期比重',
+   formula:'比重 = 服装出口额 ÷ 纺织品服装出口总额',
+   solve:'1702.8÷3155≈54.0%，选B。',
+   traps:[
+    {o:'A', why:'误用“针织+梭织”之和1566÷3155≈49.6%（那是另一道题的算法），把服装出口额张冠李戴。'},
+    {o:'C', why:'分子估算偏高或分母取小，抬到59%。'},
+    {o:'D', why:'估算进一步放大，落在64%。'}],
+   key:'本题整体是“纺织品服装3155亿”，部分用“服装出口1702.8亿”；警惕与D2题的分子互换。'},
+  {q:'2021年，中国向“一带一路”沿线国家出口的纺织品服装额，约占全国纺织品服装出口总额的（ ）', opts:['A. 31%','B. 36%','C. 41%','D. 46%'], ans:'B', point:'现期比重',
+   formula:'比重 = “一带一路”沿线出口额 ÷ 纺织品服装出口总额',
+   solve:'1137.9÷3155≈36.1%，选B。',
+   traps:[
+    {o:'C', why:'估算偏高（如分母按2800计），抬到41%。'},
+    {o:'A', why:'把1137.9误当113.79或分母用错，偏到31%。'},
+    {o:'D', why:'分子、分母同时取错方向，虚高到46%。'}],
+   key:'找准分子1137.9与整体3155；同组材料连续考比重，注意每次的“部分”不同。'},
+ ]
+},
+/* ---------- 材料E：2018年国考（副省级）·生活服务电商市场（真题） ---------- */
+{id:'E', title:'2015—2016年中国生活服务电商市场交易规模', source:'2018年国考（副省级）真题', type:'zhen',
+ note:'',
+ kind:'table',
+ blocks:[
+  {t:'表  2015—2016年中国生活服务电商市场交易规模统计表（单位：亿元）', head:['市场','2015年','2016年'], rows:[['在线餐饮外卖市场',530.6,1761.5],['移动出行市场',999.0,2038.0],['在线旅游市场',4487.2,6138.0]]}
+ ],
+ qs:[
+  {q:'如按2016年移动出行市场同比增长趋势估算，2018年该市场规模将约为（ ）', opts:['A. 接近5000亿元','B. 6000多亿元','C. 8000多亿元','D. 超过1万亿元'], ans:'C', point:'现期量',
+   formula:'现期量 = 基期量×(1+r)ⁿ；先求2016年增速，再按同一增速外推两年',
+   solve:'2016年移动出行增速：2038÷999−1≈104%；2018年规模=2038×(1+104%)²≈2038×4.16≈8478亿元，即8000多亿元，选C。',
+   traps:[
+    {o:'A', why:'只外推一年（2038×2.04≈4158亿元），漏掉2018年还需再乘一年增速。'},
+    {o:'B', why:'增速理解错误（如把增速算成约64%），把结果压低到6000多亿。'},
+    {o:'D', why:'多乘一年（按三年外推）或把增速重复累加，高估到万亿以上。'}],
+   key:'“按同比增长趋势估算n年后”=基期×(1+r)ⁿ，外推年数不能错。'},
+  {q:'2016年，在线旅游市场交易规模同比增长约（ ）', opts:['A. 27%','B. 31%','C. 37%','D. 42%'], ans:'C', point:'增长率',
+   formula:'增长率 = 增长量 ÷ 基期量（注意用2015年做分母）',
+   solve:'增长量=6138.0−4487.2=1650.8亿元；增长率=1650.8÷4487.2≈36.8%，选C。',
+   traps:[
+    {o:'A', why:'分母误用现期量6138.0：1650.8÷6138≈26.9%，把“增长率”的基期和现期搞反。'},
+    {o:'B', why:'估算偏差（如增长量按1600计、4487.2按5100计），压低到31%。'},
+    {o:'D', why:'增长量或分母估算过高，抬到42%。'}],
+   key:'增长率的分母永远是“基期量”（上年值），这是命题人最爱埋的坑。'},
+  {q:'2015年，移动出行市场规模约是在线餐饮外卖市场的（ ）倍', opts:['A. 1.4','B. 1.7','C. 1.9','D. 2.2'], ans:'C', point:'现期倍数',
+   formula:'倍数 = 部分A ÷ 部分B',
+   solve:'999.0÷530.6≈1.88倍，选C。',
+   traps:[
+    {o:'D', why:'估算偏高（如把999按1050、530.6按480计），抬到2.2。'},
+    {o:'B', why:'截位时分子缩小或分母放大，落在1.7。'},
+    {o:'A', why:'把在线餐饮外卖530.6与移动出行999.0的除法方向搞反（530.6÷999≈0.53），或数据看串。'}],
+   key:'倍数=999/530.6≈1.9；先定谁是“部分”谁是基准，别除反。'},
+  {q:'2016年，在线餐饮外卖市场交易规模同比增长约（ ）', opts:['A. 增长1.3倍','B. 增长1.7倍','C. 增长2.3倍','D. 增长3.3倍'], ans:'C', point:'增长率',
+   formula:'增长率（倍数表达）= 现期量÷基期量 − 1',
+   solve:'1761.5÷530.6≈3.32，增长=3.32−1≈2.3倍（即约232%），选C。',
+   traps:[
+    {o:'D', why:'直接用1761.5÷530.6≈3.3当答案，漏掉“增长几倍”需减1——本组最经典的倍数陷阱。'},
+    {o:'B', why:'截位误差（如1761.5按1500、530.6按600），低估到1.7倍。'},
+    {o:'A', why:'把增速按“增量÷现期”算（1230.9÷1761.5≈0.7），混淆基期与现期。'}],
+   key:'“同比增长几倍”=现期/基期−1；D选项精确对应“未减1”的干扰设计。'},
+ ]
+},
+/* ---------- 材料F：2018年联考·居民人均可支配收入（真题） ---------- */
+{id:'F', title:'2017年上半年全国居民人均可支配收入', source:'2018年联考真题', type:'zhen',
+ note:'',
+ kind:'text',
+ blocks:[
+  {t:'文字材料',
+   text:'2017年上半年，全国居民人均可支配收入12932元，比上年同期名义增长8.8%。其中，城镇居民人均可支配收入18332元，增长8.1%；农村居民人均可支配收入6562元，增长8.5%。'}
+ ],
+ qs:[
+  {q:'2016年上半年，城镇居民人均可支配收入约为（ ）万元', opts:['A. 1.4','B. 1.7','C. 2.0','D. 2.3'], ans:'B', point:'基期量',
+   formula:'基期量 = 现期量 ÷ (1 + 增长率)',
+   solve:'18332÷(1+8.1%)=18332÷1.081≈16958元≈1.7万元，选B。',
+   traps:[
+    {o:'C', why:'把现期18332元“化除为乘”方向搞反：18332×(1+8.1%)≈19818元≈2.0万元，正好是反向陷阱。'},
+    {o:'D', why:'继续放大误差（如乘了两次或把8.1%当作10%以上算），高估到2.3万。'},
+    {o:'A', why:'误用农村居民数据或除错，明显偏低。'}],
+   key:'问“2016年”是基期，必须除以(1+r)；选项里永远埋伏着“现期量”或“反向乘”陷阱。'},
+  {q:'2016年上半年，全国居民人均可支配收入约为（ ）元', opts:['A. 11800','B. 12100','C. 12500','D. 12900'], ans:'A', point:'基期量',
+   formula:'|r|较小时可化除为乘：基期 ≈ 现期×(1−r)',
+   solve:'12932÷(1+8.8%)≈12932×(1−8.8%)=12932−1138≈11794元，约11800元，选A。',
+   traps:[
+    {o:'D', why:'直接用现期量12932元，完全没做基期折算。'},
+    {o:'C', why:'化除为乘时扣得不够（如只按6.8%扣），结果偏高到12500。'},
+    {o:'B', why:'估算误差偏大（如扣减额算错），落在12100。'}],
+   key:'r在10%以内，基期≈现期×(1−r)口算即可；D选项就是现期量的“直选陷阱”。'},
+  {q:'2017年上半年，城镇居民人均可支配收入约是农村居民的（ ）倍', opts:['A. 2.4','B. 2.6','C. 2.8','D. 3.1'], ans:'C', point:'现期倍数',
+   formula:'倍数 = 城镇居民收入 ÷ 农村居民收入',
+   solve:'18332÷6562≈2.79倍，选C。',
+   traps:[
+    {o:'D', why:'估算偏高（如把分母按5900计），抬到3.1。'},
+    {o:'B', why:'截位误差（如18332按18000、6562按6900），落在2.6。'},
+    {o:'A', why:'除法方向搞反（6562÷18332≈0.36）或数据看串，明显偏低。'}],
+   key:'倍数=18332/6562≈2.8；城乡比是高频考点，注意分子是“城镇居民”。'},
+  {q:'2016年上半年，农村居民人均可支配收入约为（ ）元', opts:['A. 5900','B. 6050','C. 6200','D. 6562'], ans:'B', point:'基期量',
+   formula:'基期量 = 现期量 ÷ (1 + 增长率)',
+   solve:'6562÷(1+8.5%)=6562÷1.085≈6048元，选B。',
+   traps:[
+    {o:'D', why:'直接用现期量6562元，未做基期折算。'},
+    {o:'C', why:'化除为乘时扣减不足（6562×0.94≈6168→6200），结果偏高。'},
+    {o:'A', why:'扣减过头（如按9.5%扣），低估到5900。'}],
+   key:'基期=现期÷(1+r)；D选项现期直选，C选项是“化除为乘扣太少”的常见失误。'},
+ ]
+},
+/* ---------- 材料G：2017年规上工业企业利润（真题改编） ---------- */
+{id:'G', title:'2017年全国规模以上工业企业利润', source:'真题改编（2018年联考间隔增长真题素材）', type:'gaib',
+ note:'',
+ kind:'text',
+ blocks:[
+  {t:'文字材料',
+   text:'2017年，全国规模以上工业企业实现利润总额75187.1亿元，比上年增长21%，增速比2016年加快12.5个百分点。'}
+ ],
+ qs:[
+  {q:'2016年，全国规模以上工业企业利润总额同比增速为（ ）', opts:['A. 8.5%','B. 12.5%','C. 21.0%','D. 33.5%'], ans:'A', point:'百分点',
+   formula:'“加快/提高n个百分点”=今年增速比去年高n个百分点 ⇒ 去年增速 = 今年增速 − n',
+   solve:'2017年增速21%比2016年“加快12.5个百分点”，说明2016年增速更低：21%−12.5%=8.5%，选A。',
+   traps:[
+    {o:'D', why:'把“加快”当成“放缓”：21%+12.5%=33.5%，方向判断反了。'},
+    {o:'C', why:'直接用2017年增速21%当2016年增速，时间错位。'},
+    {o:'B', why:'把“12.5个百分点”这个差量直接当增速。'}],
+   key:'“加快/回落n个百分点”是百分数的加减关系，先判断方向再加减。'},
+  {q:'2017年，全国规模以上工业企业利润总额约比2015年增长（ ）', opts:['A. 29.5%','B. 31.3%','C. 33.5%','D. 42.0%'], ans:'B', point:'隔年增长率',
+   formula:'间隔增长率 R = r₁ + r₂ + r₁×r₂',
+   solve:'2016年增速r₂=8.5%，2017年增速r₁=21%。R=21%+8.5%+21%×8.5%=29.5%+1.785%≈31.3%，选B。',
+   traps:[
+    {o:'A', why:'只做加法21%+8.5%=29.5%，漏掉交叉项21%×8.5%。'},
+    {o:'C', why:'把2016年增速错用为12.5个百分点（或33.5%），叠加错位。'},
+    {o:'D', why:'交叉项算错或把21%×8.5%≈1.785%错算为12.5%，高估。'}],
+   key:'间隔增长率必须加交叉项r₁×r₂，交叉项通常≈1~3个百分点，不能省略。'},
+  {q:'2016年，全国规模以上工业企业实现利润总额约为（ ）亿元', opts:['A. 58000','B. 62000','C. 66000','D. 70000'], ans:'B', point:'基期量',
+   formula:'基期量 = 现期量 ÷ (1 + 增长率)',
+   solve:'75187.1÷(1+21%)=75187.1÷1.21≈62138亿元，选B。',
+   traps:[
+    {o:'C', why:'把21%当成“扣减14%左右”（75187÷1.14≈65954），除以错误分母。'},
+    {o:'D', why:'估算偏高（如只扣10%），落在70000。'},
+    {o:'A', why:'扣减过头（如除以1.30），低估到58000。'}],
+   key:'基期=现期÷(1+r)，21%对应除以1.21；别用1.14或1.30这类近似分母。'},
+ ]
+},
+/* ---------- 材料H：S市实际使用外资（真题化设计·混合增长率） ---------- */
+{id:'H', title:'2022年S市实际使用外资情况', source:'真题化训练（十字交叉法经典结构）', type:'gaib',
+ note:'',
+ kind:'text',
+ blocks:[
+  {t:'文字材料',
+   text:'2022年1—12月，S市实际使用外资金额239.6亿美元，比去年同期增长0.4%。其中，第三产业实际使用外资230.7亿美元，同比增长1.0%。'}
+ ],
+ qs:[
+  {q:'2022年1—12月，S市非第三产业实际使用外资同比（ ）', opts:['A. 增长1%以内','B. 下降不足10%','C. 下降10%—15%','D. 下降15%左右'], ans:'D', point:'混合增长率',
+   formula:'整体增速介于两部分增速之间且偏向基期量大的一方；线段法：量之比 = 距离的反比',
+   solve:'整体0.4%介于三产1%与非三产r之间，且整体量239.6远大于非三产量8.9（239.6−230.7），故整体增速应更靠近三产1%一侧，r必远小于0.4%且为负。定量：(0.4%−r)÷(1%−0.4%) = 三产基期÷非三产基期 ≈ 230.7÷8.9≈25.9，得0.4%−r≈15.5%，r≈−15.1%，选D。',
+   traps:[
+    {o:'A', why:'只做定性判断（r<0.4%）就停手，误以为下降幅度很小，未用线段法定量。'},
+    {o:'B', why:'量距成反比时比例算错（如误把三产量÷整体量），低估降幅。'},
+    {o:'C', why:'比例关系方向或数值偏差，落在10%—15%区间。'}],
+   key:'混合增长率“居中且偏向基期量大的一方”定性排除A；定量用线段法“部分量之比=增速距离反比”。'},
+  {q:'2022年，S市第三产业实际使用外资占全市实际使用外资的比重，与上年相比（ ）', opts:['A. 上升','B. 下降','C. 不变','D. 无法判断'], ans:'A', point:'比重变化判断',
+   formula:'部分增速 ＞ 整体增速 ⇒ 比重上升；反之下降',
+   solve:'第三产业增速1.0%＞全市整体增速0.4%，部分跑得比整体快，比重上升，选A。',
+   traps:[
+    {o:'B', why:'方向判断反：误以为“整体增长的部分占比下降”，忘了直接比两个增速大小。'},
+    {o:'D', why:'以为需要具体数值才能判断，实际只需比较两个增速符号。'},
+    {o:'C', why:'把“增速接近”误当“比重不变”，忽视了1.0%与0.4%仍有大小之差。'}],
+   key:'比重升降只取决于“部分增速 vs 整体增速”，与数值大小无关。'},
+  {q:'2022年，S市第三产业实际使用外资占全市实际使用外资的比重约为（ ）', opts:['A. 92%','B. 94%','C. 96%','D. 98%'], ans:'C', point:'现期比重',
+   formula:'比重 = 第三产业额 ÷ 全市总额',
+   solve:'230.7÷239.6≈96.3%，选C。',
+   traps:[
+    {o:'D', why:'估算偏高（如把239.6按232计），抬到98%。'},
+    {o:'B', why:'把分子看错（如230.7按225）或分母放大，落在94%。'},
+    {o:'A', why:'估算偏低或数据混入非三产业务（230.7÷250.6≈92%）。'}],
+   key:'比重=230.7/239.6≈96.3%；注意全市239.6中三产占绝对大头，占比接近96%。'},
+ ]
+},
+/* ---------- 材料I：N市装备制造业（真题化设计·拉动增长与贡献率） ---------- */
+{id:'I', title:'2021年N市规模以上工业增加值', source:'真题化训练（拉动增长·增长贡献率专项）', type:'gaib',
+ note:'',
+ kind:'text',
+ blocks:[
+  {t:'文字材料',
+   text:'2021年，N市规模以上工业增加值8100亿元，同比增长9.0%。其中，装备制造业增加值同比增长12.8%，2020年装备制造业增加值为6200亿元，装备制造业对全市规模以上工业增加值增长的贡献率为45.0%。'}
+ ],
+ qs:[
+  {q:'2021年，装备制造业拉动N市规模以上工业增加值增长（ ）个百分点', opts:['A. 3.2','B. 4.05','C. 4.5','D. 5.8'], ans:'B', point:'拉动增长与贡献率',
+   formula:'拉动增长 = 贡献率 × 整体增速（百分点）',
+   solve:'拉动百分点=45.0%×9.0%=4.05个百分点，选B。',
+   traps:[
+    {o:'D', why:'误用“部分增速×贡献率”：12.8%×45%≈5.76，把公式张冠李戴。'},
+    {o:'C', why:'把贡献率当成50%来乘（45%≈50%的粗放估算），或9%×0.5=4.5。'},
+    {o:'A', why:'用装备增速12.8%减整体增速9.0%后取3.2附近的粗糙估算。'}],
+   key:'拉动(百分点)=贡献率×整体增速；贡献率是“增量占比”，拉动是“对整体增速的贡献点”。'},
+  {q:'2021年，N市装备制造业增加值同比增量约为（ ）亿元', opts:['A. 700','B. 794','C. 850','D. 900'], ans:'B', point:'增长量',
+   formula:'增长量 = 基期量 × 增长率',
+   solve:'6200×12.8%=793.6亿元，选B。',
+   traps:[
+    {o:'A', why:'用百化分时把12.8%≈1/8.9，6200÷8.9≈697，取整后误选700（正确应1/7.8）。'},
+    {o:'C', why:'把12.8%放大估算为13.7%或6200×13.7%≈849。'},
+    {o:'D', why:'把增速高估到14.5%左右，得到约900。'}],
+   key:'增长量=基期×r；百化分时注意12.8%≈1/7.8（而非1/8），精确到793.6。'},
+  {q:'2020年，N市规模以上工业增加值约为（ ）亿元', opts:['A. 7200','B. 7300','C. 7430','D. 7600'], ans:'C', point:'基期量',
+   formula:'基期量 = 现期量 ÷ (1 + 增长率)',
+   solve:'8100÷(1+9.0%)=8100÷1.09≈7431亿元，选C。',
+   traps:[
+    {o:'D', why:'化除为乘方向反：8100×(1+9%)≈8829不对——此处陷阱为8100×0.94≈7614，扣减不足。'},
+    {o:'A', why:'除过头（如按8100÷1.125≈7200），把9%当成12.5%。'},
+    {o:'B', why:'估算偏差（如8100÷1.11≈7297），落在7300。'}],
+   key:'基期=现期÷(1+r)，9%对应除以1.09，别用1.1或1.125。'},
+  {q:'2021年，N市装备制造业增加值占规模以上工业增加值的比重约为（ ）', opts:['A. 79%','B. 83%','C. 86%','D. 89%'], ans:'C', point:'现期比重',
+   formula:'比重 = 装备制造业现期增加值 ÷ 规上工业增加值',
+   solve:'2021年装备制造业增加值=6200×(1+12.8%)=6200×1.128≈6993.6亿元；比重=6993.6÷8100≈86.3%，选C。',
+   traps:[
+    {o:'A', why:'直接用2020年装备增加值6200÷8100≈76.5%，忘了把装备值也折到2021年（现期）。'},
+    {o:'B', why:'装备现值估算偏低（如6200×1.1=6820→84.2%附近），落在83%。'},
+    {o:'D', why:'装备现值估算偏高（如6200×1.15=7130→88%），落在89%。'}],
+   key:'比重分子要用“2021年现值”6993.6，不能拿2020年基期6200直接除。'},
+ ]
+},
+/* ---------- 材料J：M市粮食生产（真题化设计·平均数与倍数专项） ---------- */
+{id:'J', title:'2022年M市粮食生产情况', source:'真题化训练（平均数·倍数专项）', type:'gaib',
+ note:'',
+ kind:'text',
+ blocks:[
+  {t:'文字材料',
+   text:'2022年，M市粮食播种面积1450万亩，比上年增长2.0%；粮食总产量610万吨，比上年增长6.0%。其中，夏粮产量250万吨，同比增长3.0%；秋粮产量360万吨，同比增长7.5%。'}
+ ],
+ qs:[
+  {q:'2022年，M市粮食亩均产量同比增长约（ ）', opts:['A. 2.0%','B. 3.9%','C. 4.0%','D. 6.0%'], ans:'B', point:'平均数增长率',
+   formula:'平均数增长率 = (总量增速a − 份数增速b) ÷ (1 + 份数增速b)',
+   solve:'亩均产量=总产量÷播种面积；a=6.0%，b=2.0%。平均数增长率=(6%−2%)÷(1+2%)=4%÷1.02≈3.9%，选B。',
+   traps:[
+    {o:'C', why:'直接相减6%−2%=4%，漏除以(1+2%)——这是平均数增长率题型的头号陷阱。'},
+    {o:'A', why:'把播种面积增速2%当成亩均产量增速。'},
+    {o:'D', why:'把总产量增速6%当成亩均产量增速（分子分母概念混淆）。'}],
+   key:'平均数增长率≠两增速之差，必须再除以(1+份数增速)。'},
+  {q:'2022年，M市粮食亩均产量约为（ ）公斤', opts:['A. 400','B. 421','C. 450','D. 480'], ans:'B', point:'现期平均数',
+   formula:'亩均产量 = 总产量 ÷ 播种面积；1吨 = 1000公斤',
+   solve:'610万吨÷1450万亩=610÷1450吨/亩≈0.4207吨/亩≈420.7公斤/亩，选B。',
+   traps:[
+    {o:'A', why:'估算偏低（如把610当成600、1450当成1525），压到400附近。'},
+    {o:'C', why:'分母估算偏小（如1450按1350），抬到450。'},
+    {o:'D', why:'单位换算或分母误差叠加，高估到480。'}],
+   key:'先算610/1450≈0.42吨/亩，再×1000换算公斤；注意单位。'},
+  {q:'2021年，M市粮食亩均产量约为（ ）公斤', opts:['A. 400','B. 405','C. 421','D. 440'], ans:'B', point:'基期平均数',
+   formula:'基期平均数 = 基期总量 ÷ 基期份数；或 现期平均数 ÷ (1+平均数增长率)',
+   solve:'2021年产量=610÷1.06≈575.5万吨；2021年面积=1450÷1.02≈1421.6万亩；亩均=575.5÷1421.6≈0.405吨/亩≈405公斤。（也可用421.6÷1.0392≈405.8。）选B。',
+   traps:[
+    {o:'C', why:'直接用现期亩均产量421公斤，没做基期折算。'},
+    {o:'A', why:'只把产量折回基期、面积未折（575.5÷1450≈397公斤），低估。'},
+    {o:'D', why:'面积折回但产量未折或方向算反，高估到440。'}],
+   key:'基期平均数要“分子分母都折回基期”；或直接用现期平均数除以(1+平均数增长率)。'},
+  {q:'2021年，M市秋粮产量约是夏粮产量的（ ）倍', opts:['A. 1.2','B. 1.4','C. 1.6','D. 1.8'], ans:'B', point:'基期倍数',
+   formula:'基期倍数 = 基期A ÷ 基期B = 现期倍数 × (1+b)÷(1+a)',
+   solve:'2021年秋粮=360÷1.075≈334.9万吨；2021年夏粮=250÷1.03≈242.7万吨；倍数=334.9÷242.7≈1.38倍，选B。',
+   traps:[
+    {o:'C', why:'直接用现期倍数360÷250=1.44并向上取整到1.6，忽略基数差异的微调。'},
+    {o:'D', why:'只折分子不折分母（334.9÷250≈1.34）再放大估算，或计算错误。'},
+    {o:'A', why:'两个增速方向都处理反（乘错方向），低估到1.2。'}],
+   key:'基期倍数=基期量相除；两个增速接近时现期倍数可作参照再微调。'},
+  {q:'2022年，M市粮食亩均产量比上年增加约（ ）公斤', opts:['A. 12','B. 16','C. 20','D. 24'], ans:'B', point:'平均数增长量',
+   formula:'平均数增长量 = 现期平均数 − 基期平均数 ≈ 基期平均数 × 平均数增长率',
+   solve:'现期亩均420.7公斤，基期亩均约405公斤，增量≈420.7−404.8≈15.9公斤，约16公斤，选B。（亦可用基期405×3.9%≈15.8。）',
+   traps:[
+    {o:'C', why:'用“a−b=4%”直接乘现期420（420×4%≈16.8）再取整到20，或方向误差。'},
+    {o:'D', why:'用总量增速6%乘现期（420×6%≈25），把平均数增长量错用总量口径。'},
+    {o:'A', why:'估算偏低（如用405×2%≈8或取整误差）。'}],
+   key:'平均数增长量=现期平均−基期平均≈基期×平均数增长率；别拿总量增速算平均数增量。'},
+  {q:'2022年，M市夏粮产量占粮食总产量的比重，与上年相比（ ）', opts:['A. 上升','B. 下降','C. 不变','D. 无法判断'], ans:'B', point:'比重变化判断',
+   formula:'部分增速 ＜ 整体增速 ⇒ 比重下降',
+   solve:'夏粮增速3.0%＜粮食总产量增速6.0%，部分跑得比整体慢，比重下降，选B。',
+   traps:[
+    {o:'A', why:'方向判断反：误以为“部分在增长=占比在上升”，没与整体增速比较。'},
+    {o:'D', why:'以为需要绝对数值才能判断，实际只需比较3.0%与6.0%两个增速。'},
+    {o:'C', why:'把夏粮增速3.0%误看成与总量6.0%同步，忽视了增速差仍在。'}],
+   key:'比重升降=部分增速 vs 整体增速；夏粮3.0%＜总量6.0%，必降。'},
+ ]
+},
+/* ---------- 材料K：2019年全国棉花产量（真题改编） ---------- */
+{id:'K', title:'2019年全国棉花产量', source:'真题改编（2019年棉花产量真题素材）', type:'gaib',
+ note:'',
+ kind:'text',
+ blocks:[
+  {t:'文字材料',
+   text:'2019年，全国棉花产量588.9万吨，比上年减少21.3万吨。其中，新疆棉花产量500.2万吨，比上年减少10.8万吨。全国棉花种植面积为3339.2千公顷，比上年减少15.2千公顷。'}
+ ],
+ qs:[
+  {q:'2018年，全国棉花产量约为（ ）万吨', opts:['A. 567.6','B. 588.9','C. 610.2','D. 630.5'], ans:'C', point:'基期量',
+   formula:'基期量 = 现期量 − 增长量（增长量为负时即“现期量 + 减少量”）',
+   solve:'2019年比上年“减少21.3万吨”，说明2018年更大：588.9+21.3=610.2万吨，选C。',
+   traps:[
+    {o:'B', why:'直接用现期量588.9万吨，忘了求基期。'},
+    {o:'A', why:'方向搞反：588.9−21.3=567.6，把“减少”当“增加”。'},
+    {o:'D', why:'加减量看错（如用23.4或30.5），数值虚高。'}],
+   key:'“比上年减少X”⇒ 基期=现期+X；方向错了就直接落入A选项。'},
+  {q:'2019年，新疆棉花产量占全国棉花产量的比重约为（ ）', opts:['A. 79%','B. 82%','C. 85%','D. 88%'], ans:'C', point:'现期比重',
+   formula:'比重 = 部分量 ÷ 整体量',
+   solve:'500.2÷588.9≈84.9%，选C。',
+   traps:[
+    {o:'B', why:'分母误用2018年全国产量610.2万吨：500.2÷610.2≈82%。'},
+    {o:'A', why:'估算偏低（如分子按490计），落在79%。'},
+    {o:'D', why:'估算偏高（如分母按570计），抬到88%。'}],
+   key:'比重题的分母是“当期的整体量588.9”，不是上年610.2。'},
+  {q:'2019年，全国棉花种植面积同比约（ ）', opts:['A. 下降0.45%','B. 下降1.5%','C. 上升0.45%','D. 上升1.5%'], ans:'A', point:'增长率',
+   formula:'降幅 = 减少量 ÷ 基期量（基期量 = 现期量 + 减少量）',
+   solve:'2018年面积=3339.2+15.2=3354.4千公顷；降幅=15.2÷3354.4≈0.45%，选A。',
+   traps:[
+    {o:'C', why:'数值对了但方向反，把“减少15.2千公顷”当成增加。'},
+    {o:'D', why:'方向与数值都错（上升1.5%）。'},
+    {o:'B', why:'数值放大（如15.2÷1000或按1.5%粗估），低估基期导致虚高。'}],
+   key:'求“同比增减幅”用基期做分母；下降就用现期+减少量还原基期。'},
+  {q:'2018年，新疆棉花产量约为（ ）万吨', opts:['A. 489.4','B. 500.2','C. 511.0','D. 521.6'], ans:'C', point:'基期量',
+   formula:'基期量 = 现期量 − 增长量（减少时即“现期量 + 减少量”）',
+   solve:'2019年新疆比上年减少10.8万吨，2018年更大：500.2+10.8=511.0万吨，选C。',
+   traps:[
+    {o:'B', why:'直接用现期量500.2万吨，忘了求基期。'},
+    {o:'A', why:'方向搞反：500.2−10.8=489.4，把“减少”当“增加”。'},
+    {o:'D', why:'加减量看错（如加21.3全国口径），数值虚高。'}],
+   key:'“比上年减少10.8万吨”⇒ 基期=现期+10.8；与K1题（全国棉花610.2）形成同类陷阱对照。'},
+ ]
+},
+/* ---------- 材料L：互联网企业信息服务收入（真题改编） ---------- */
+{id:'L', title:'2020年互联网企业信息服务收入', source:'真题改编（互联网企业收入真题素材）', type:'gaib',
+ note:'',
+ kind:'text',
+ blocks:[
+  {t:'文字材料',
+   text:'2020年，互联网企业信息服务收入共7068亿元，同比增长11.5%，增速低于上年同期11.2个百分点。'}
+ ],
+ qs:[
+  {q:'2019年，互联网企业信息服务收入同比增速为（ ）', opts:['A. 0.3%','B. 11.5%','C. 22.7%','D. 23.4%'], ans:'C', point:'百分点',
+   formula:'“增速低于上年同期n个百分点”⇒ 上年增速 = 今年增速 + n',
+   solve:'2020年增速11.5%“低于上年同期11.2个百分点”，说明2019年更高：11.5%+11.2%=22.7%，选C。',
+   traps:[
+    {o:'A', why:'用11.5%−11.2%=0.3%，把“低于上年”的方向理解反（2019年应更高而非更低）。'},
+    {o:'B', why:'直接用2020年增速11.5%当2019年增速，时间错位。'},
+    {o:'D', why:'加法误差（11.5%+11.9%），数值稍高。'}],
+   key:'“低于/高于上年同期n个百分点”先定方向：低于上年⇒上年更大，用加法。'},
+  {q:'2019年，互联网企业信息服务收入约为（ ）亿元', opts:['A. 6100','B. 6339','C. 6600','D. 7068'], ans:'B', point:'基期量',
+   formula:'基期量 = 现期量 ÷ (1 + 增长率)',
+   solve:'7068÷(1+11.5%)=7068÷1.115≈6339亿元，选B。',
+   traps:[
+    {o:'D', why:'直接用现期量7068亿元，未做基期折算。'},
+    {o:'C', why:'化除为乘时扣减不足（如按6%扣），结果偏高到6600。'},
+    {o:'A', why:'按11.5%扣过头（如除以1.16），低估到6100。'}],
+   key:'基期=现期÷(1+r)；D选项永远是现期直选陷阱。'},
+  {q:'2020年，互联网企业信息服务收入较2018年约增长（ ）', opts:['A. 11.5%','B. 22.7%','C. 36.8%','D. 47.2%'], ans:'C', point:'隔年增长率',
+   formula:'间隔增长率 R = r₁ + r₂ + r₁×r₂',
+   solve:'r₁=11.5%（2020年），r₂=22.7%（2019年）。R=11.5%+22.7%+11.5%×22.7%=34.2%+2.61%≈36.8%，选C。',
+   traps:[
+    {o:'B', why:'只算2019年单年增速22.7%，没有结合2020年。'},
+    {o:'A', why:'用2020年单年增速11.5%当答案，概念错位。'},
+    {o:'D', why:'交叉项计算错误（如11.5%×22.7%≈2.6%却算成13%），高估到47%。'}],
+   key:'间隔增长=两年增速相加再加交叉项；交叉项r₁×r₂约2~3个百分点，不能省。'},
+  {q:'2018年，互联网企业信息服务收入约为（ ）亿元', opts:['A. 4900','B. 5160','C. 5400','D. 5700'], ans:'B', point:'基期量',
+   formula:'隔年基期：先求2019年收入，再除以2019年增速还原到2018年',
+   solve:'2019年收入≈6339亿元（上一题已求）；2019年增速22.7%，则2018年=6339÷(1+22.7%)≈5165亿元，选B。',
+   traps:[
+    {o:'D', why:'只折一年（6339÷1.11≈5710），漏用2019年22.7%的增速，隔年还原只做了一半。'},
+    {o:'C', why:'2019年收入估算偏高（如按6400计且折一年），落在5400。'},
+    {o:'A', why:'两步折算都偏向低估，落到4900。'}],
+   key:'隔年基期要“连折两步”：7068→2019→2018；每步用对应年份的增速。'},
+ ]
+},
+/* ---------- 材料M：外贸进出口（真题化设计） ---------- */
+{id:'M', title:'H省货物贸易进出口（2021年）', source:'真题化设计（按国考命题风格）', type:'gaib',
+ note:'以国考“文字材料+单一主体多问”结构设计，覆盖和差、基期量、基期倍数、比重变化、增长量五类考点。',
+ kind:'text',
+ blocks:[
+  {t:'文字材料',
+   text:'2021年，H省货物贸易进出口总额6800亿元，比上年增长12.0%。其中，出口总额4100亿元，同比增长14.5%；进口总额2700亿元，同比增长8.5%。'}
+ ],
+ qs:[
+  {q:'2021年，H省货物贸易进出口顺差约为（ ）亿元', opts:['A. 1200','B. 1300','C. 1400','D. 1500'], ans:'C', point:'和差计算',
+   formula:'贸易顺差 = 出口额 − 进口额',
+   solve:'4100−2700=1400亿元，选C。',
+   traps:[
+    {o:'D', why:'把“顺差”误算成“出口占进出口的比重差”或加减数看错（如4100−2600），偏高到1500。'},
+    {o:'B', why:'截位误差或把进口按2800计，落在1300。'},
+    {o:'A', why:'把2700误当2500或漏减进口基数，明显偏低。'}],
+   key:'顺差=出口−进口，同一年份直接相减；注意别把进口2700看错。'},
+  {q:'2020年，H省货物贸易进出口总额约为（ ）亿元', opts:['A. 5800','B. 6070','C. 6300','D. 6800'], ans:'B', point:'基期量',
+   formula:'基期量 = 现期量 ÷ (1 + 增长率)',
+   solve:'6800÷(1+12%)=6800÷1.12≈6071亿元，选B。',
+   traps:[
+    {o:'D', why:'直接用现期量6800亿元，未做基期折算。'},
+    {o:'C', why:'化除为乘时扣减不足（如按8%扣，6800×0.92≈6256→6300），结果偏高。'},
+    {o:'A', why:'按12%扣过头（如除以1.18），低估到5800。'}],
+   key:'基期=现期÷(1+r)；D选项现期直选，C选项是“扣减不足”的典型失误。'},
+  {q:'2020年，H省出口总额约是进口总额的（ ）倍', opts:['A. 1.2','B. 1.4','C. 1.6','D. 1.8'], ans:'B', point:'基期倍数',
+   formula:'基期倍数 = 出口基期量 ÷ 进口基期量',
+   solve:'出口基期=4100÷1.145≈3581亿元；进口基期=2700÷1.085≈2488亿元；3581÷2488≈1.44倍，选B。',
+   traps:[
+    {o:'C', why:'直接用现期倍数4100÷2700≈1.52四舍五入到1.6，未把分子分母都折回基期。'},
+    {o:'A', why:'截位误差（如出口基期按3400），落在1.2。'},
+    {o:'D', why:'估算偏高（如出口按3600、进口按2300），抬到1.8。'}],
+   key:'基期倍数要求分子分母都还原到基期再相除；现期倍数1.5只能作参照。'},
+  {q:'2021年，H省出口总额占进出口总额的比重，与上年相比（ ）', opts:['A. 上升','B. 下降','C. 不变','D. 无法判断'], ans:'A', point:'比重变化判断',
+   formula:'部分增速 ＞ 整体增速 ⇒ 比重上升',
+   solve:'出口增速14.5%＞进出口整体增速12.0%，部分跑得比整体快，比重上升，选A。',
+   traps:[
+    {o:'B', why:'方向判断反，误以为“整体也在增长=出口占比下降”。'},
+    {o:'D', why:'以为必须算出具体比重才能判断，实际只需比较14.5%与12.0%。'},
+    {o:'C', why:'把14.5%与12.0%的差误当“忽略不计”，忽视了占比仍在爬升。'}],
+   key:'比重升降只比“部分增速 vs 整体增速”；14.5%＞12.0%，必升。'},
+  {q:'2021年，H省出口总额同比增加约（ ）亿元', opts:['A. 430','B. 470','C. 520','D. 560'], ans:'C', point:'增长量',
+   formula:'增长量 = 基期量 × r = 现期量 × r ÷ (1+r)',
+   solve:'出口基期=4100÷1.145≈3581亿元；增长量=3581×14.5%≈519亿元，选C。',
+   traps:[
+    {o:'D', why:'直接用现期4100×14.5%≈595取560，忘了除以(1+r)把基数折回基期。'},
+    {o:'B', why:'基期折算后乘比略低（如3581×13%），落在470。'},
+    {o:'A', why:'截位误差或百化分选错分母，明显偏低。'}],
+   key:'增长量用“基期×r”；现期×r 不经折算会虚高，正是D选项的干扰逻辑。'},
+ ]
+},
+/* ---------- 材料N：快递业务（真题化设计） ---------- */
+{id:'N', title:'Q市快递业务量（2022年）', source:'真题化设计（按国考命题风格）', type:'gaib',
+ note:'以“总量+分项”结构设计，覆盖现期比重、现期倍数、基期量、增长量、现期量五类考点。',
+ kind:'text',
+ blocks:[
+  {t:'文字材料',
+   text:'2022年，Q市快递业务量累计完成85.6亿件，同比增长11.5%。其中，同城快递业务量完成16.2亿件，同比增长5.0%；异地快递业务量完成66.1亿件，同比增长13.5%；国际及港澳台快递业务量完成3.3亿件。'}
+ ],
+ qs:[
+  {q:'2022年，Q市同城快递业务量占快递业务总量的比重约为（ ）', opts:['A. 16%','B. 19%','C. 22%','D. 25%'], ans:'B', point:'现期比重',
+   formula:'比重 = 同城业务量 ÷ 总业务量',
+   solve:'16.2÷85.6≈18.9%，选B。',
+   traps:[
+    {o:'C', why:'估算偏高（如把分母按74计），抬到22%。'},
+    {o:'A', why:'把同城16.2误当14或分母取大，偏到16%。'},
+    {o:'D', why:'分子、分母同时取错方向，虚高到25%。'}],
+   key:'比重=16.2/85.6≈19%；分母用总量85.6，别拿“同城+异地”当总量。'},
+  {q:'2022年，Q市异地快递业务量约是同城快递业务量的（ ）倍', opts:['A. 3.4','B. 3.8','C. 4.1','D. 4.5'], ans:'C', point:'现期倍数',
+   formula:'倍数 = 异地业务量 ÷ 同城业务量',
+   solve:'66.1÷16.2≈4.08倍，选C。',
+   traps:[
+    {o:'D', why:'估算偏高（如把66.1按70、16.2按15.5计），抬到4.5。'},
+    {o:'B', why:'截位误差（如66.1按64），落在3.8。'},
+    {o:'A', why:'把异地与同城看串或除法方向搞反，明显偏低。'}],
+   key:'倍数=66.1/16.2≈4.1；注意分子是“异地”。'},
+  {q:'2021年，Q市快递业务量约为（ ）亿件', opts:['A. 72.5','B. 74.9','C. 76.8','D. 85.6'], ans:'C', point:'基期量',
+   formula:'基期量 = 现期量 ÷ (1 + 增长率)',
+   solve:'85.6÷(1+11.5%)=85.6÷1.115≈76.8亿件，选C。',
+   traps:[
+    {o:'D', why:'直接用现期量85.6亿件，未做基期折算。'},
+    {o:'B', why:'化除为乘时扣减不足（85.6×0.90≈77.0附近算成74.9），结果偏低。'},
+    {o:'A', why:'按11.5%扣过头（如除以1.18），低估到72.5。'}],
+   key:'基期=现期÷(1+r)；D选项现期直选陷阱。'},
+  {q:'2022年，Q市异地快递业务量同比增加约（ ）亿件', opts:['A. 5.6','B. 6.8','C. 7.9','D. 8.9'], ans:'C', point:'增长量',
+   formula:'增长量 = 基期量 × r = 现期量 × r ÷ (1+r)',
+   solve:'异地基期=66.1÷1.135≈58.2亿件；增长量=58.2×13.5%≈7.9亿件，选C。',
+   traps:[
+    {o:'D', why:'直接用现期66.1×13.5%≈8.9，忘了除以(1+r)折回基期——经典“现期直接乘”陷阱。'},
+    {o:'B', why:'基期折算后乘比略低（如58.2×11.7%），落在6.8。'},
+    {o:'A', why:'把增速当5.0%（同城增速）张冠李戴，明显偏低。'}],
+   key:'增长量=基期×r；现期×r直接乘会虚高（8.9），正是D选项。'},
+  {q:'若2023年Q市快递业务量增速与2022年持平，则2023年快递业务量约为（ ）亿件', opts:['A. 90.2','B. 93.1','C. 95.4','D. 97.8'], ans:'C', point:'现期量',
+   formula:'现期量 = 基期量 × (1 + 增长率)',
+   solve:'85.6×1.115≈95.4亿件，选C。',
+   traps:[
+    {o:'D', why:'估算偏高（如把85.6按88、11.5%按11%），抬到97.8。'},
+    {o:'B', why:'把增速按9%乘（85.6×1.09≈93.3），增速取小。'},
+    {o:'A', why:'把增速按5%乘（85.6×1.05≈89.9→90.2），误用同城增速。'}],
+   key:'现期量=基期×(1+r)；A选项就是“误用同城5.0%增速”的干扰设计。'},
+ ]
+},
+/* ---------- 材料O：新能源汽车（真题化设计） ---------- */
+{id:'O', title:'J省新能源汽车产销（2022年）', source:'真题化设计（按国考命题风格）', type:'gaib',
+ note:'以“产销+保有量”结构设计，覆盖基期量（产量/销量）、增长量倍数、比重反求整体、现期量四类考点。',
+ kind:'text',
+ blocks:[
+  {t:'文字材料',
+   text:'2022年，J省新能源汽车产量120万辆，同比增长85.0%；新能源汽车销量115万辆，同比增长78.5%。截至2022年底，J省新能源汽车保有量达到210万辆，占全省汽车保有量的4.2%。'}
+ ],
+ qs:[
+  {q:'2021年，J省新能源汽车产量约为（ ）万辆', opts:['A. 58','B. 65','C. 70','D. 75'], ans:'B', point:'基期量',
+   formula:'基期量 = 现期量 ÷ (1 + 增长率)',
+   solve:'120÷(1+85%)=120÷1.85≈64.9万辆，选B。',
+   traps:[
+    {o:'D', why:'化除为乘时扣减不足（120÷1.6≈75），把85%误当60%处理。'},
+    {o:'C', why:'把增速按70%扣（120÷1.7≈70.6），分母取小。'},
+    {o:'A', why:'把增速按90%以上扣（120÷2.0≈60→58），扣过头。'}],
+   key:'基期=现期÷(1+r)，85%对应除以1.85；别用1.6或1.7这类近似分母。'},
+  {q:'2021年，J省新能源汽车销量约为（ ）万辆', opts:['A. 60','B. 64','C. 69','D. 74'], ans:'B', point:'基期量',
+   formula:'基期量 = 现期量 ÷ (1 + 增长率)',
+   solve:'115÷(1+78.5%)=115÷1.785≈64.4万辆，选B。',
+   traps:[
+    {o:'C', why:'把78.5%按66%扣（115÷1.667≈69），分母取小。'},
+    {o:'D', why:'扣减不足（115÷1.55≈74），把增速低估。'},
+    {o:'A', why:'把销量误当产量折算（115÷1.85≈62）或扣过头，落在60。'}],
+   key:'基期=现期÷(1+r)，78.5%对应除以1.785；A选项是“误用产量增速”的干扰设计。'},
+  {q:'2022年，J省新能源汽车产量同比增量约是销量同比增量的（ ）倍', opts:['A. 0.9','B. 1.1','C. 1.3','D. 1.5'], ans:'B', point:'增长量比较',
+   formula:'倍数 = 产量增量 ÷ 销量增量；增量 = 现期 − 基期',
+   solve:'产量增量=120−64.9≈55.1万辆；销量增量=115−64.4≈50.6万辆；55.1÷50.6≈1.09倍，选B。',
+   traps:[
+    {o:'C', why:'直接用现期量相除（120÷115≈1.04四舍五入到1.3），把“增量之比”偷换成“现期量之比”。'},
+    {o:'A', why:'除法方向搞反（50.6÷55.1≈0.92），把“产量增量/销量增量”倒过来。'},
+    {o:'D', why:'两个增量估算都偏高（如按57和38），抬到1.5。'}],
+   key:'求增量必须先各自减基期；C选项就是“现期量直接比”的概念偷换。'},
+  {q:'2022年底，J省汽车保有量约为（ ）万辆', opts:['A. 4000','B. 4500','C. 5000','D. 5500'], ans:'C', point:'现期比重',
+   formula:'整体量 = 部分量 ÷ 比重',
+   solve:'新能源汽车保有量210万辆占全省4.2%，全省汽车保有量=210÷4.2%=210÷0.042=5000万辆，选C。',
+   traps:[
+    {o:'B', why:'把4.2%当4.67%除（210÷0.0467≈4500），比重取大。'},
+    {o:'A', why:'把4.2%当5.25%除（210÷0.0525≈4000），比重进一步取大。'},
+    {o:'D', why:'把210按230或比重按3.8%除，虚高到5500。'}],
+   key:'整体=部分÷比重；比重4.2%→除以0.042，别错除0.0467或0.05。'},
+  {q:'若2023年J省新能源汽车产量仍保持85%的同比增速，则2023年产量约为（ ）万辆', opts:['A. 200','B. 210','C. 222','D. 235'], ans:'C', point:'现期量',
+   formula:'现期量 = 基期量 × (1 + 增长率)',
+   solve:'120×1.85=222万辆，选C。',
+   traps:[
+    {o:'D', why:'把增速按96%乘（120×1.96≈235），增速取大。'},
+    {o:'B', why:'把85%按75%乘（120×1.75≈210），增速取小。'},
+    {o:'A', why:'把85%按67%乘（120×1.67≈200），进一步低估。'}],
+   key:'现期量=基期×(1+r)；B、D选项分别对应“增速取小/取大”的估算干扰。'},
+ ]
+},
+/* ---------- 材料P：社会消费品零售（真题化设计） ---------- */
+{id:'P', title:'P市社会消费品零售总额（2022年）', source:'真题化设计（按国考命题风格）', type:'gaib',
+ note:'以“整体下降+分项分化”结构设计，覆盖基期量、现期比重、增长量、混合增长率+比重变化、基期倍数五类考点。',
+ kind:'text',
+ blocks:[
+  {t:'文字材料',
+   text:'2022年，P市社会消费品零售总额18000亿元，同比下降2.5%。其中，城镇消费品零售额15500亿元，同比下降3.0%；乡村消费品零售额2500亿元。'}
+ ],
+ qs:[
+  {q:'2021年，P市社会消费品零售总额约为（ ）亿元', opts:['A. 17500','B. 18000','C. 18460','D. 19000'], ans:'C', point:'基期量',
+   formula:'基期量 = 现期量 ÷ (1 + 增长率)（下降时 1+r ＜ 1）',
+   solve:'18000÷(1−2.5%)=18000÷0.975≈18462亿元，选C。',
+   traps:[
+    {o:'A', why:'方向搞反：18000×0.975≈17550，把“求基期”做成“现期×（1−r）”。'},
+    {o:'B', why:'直接用现期量18000亿元，未做基期折算。'},
+    {o:'D', why:'把降幅按0.95除（18000÷0.95≈18947），分母取小。'}],
+   key:'下降时基期=现期÷(1−r)，结果大于现期；A选项就是“反向乘”陷阱。'},
+  {q:'2022年，P市乡村消费品零售额占社会消费品零售总额的比重约为（ ）', opts:['A. 11%','B. 14%','C. 17%','D. 20%'], ans:'B', point:'现期比重',
+   formula:'比重 = 乡村零售额 ÷ 零售总额',
+   solve:'2500÷18000≈13.9%，选B。',
+   traps:[
+    {o:'C', why:'估算偏高（如把分母按14700计），抬到17%。'},
+    {o:'A', why:'把2500误当2000或分母取大，偏到11%。'},
+    {o:'D', why:'分子、分母同时取错方向，虚高到20%。'}],
+   key:'比重=2500/18000≈14%；分母用总额18000，别拿“城镇+乡村”以外的数。'},
+  {q:'2022年，P市城镇消费品零售额同比下降约（ ）亿元', opts:['A. 430','B. 450','C. 480','D. 510'], ans:'C', point:'增长量',
+   formula:'下降量 = 基期量 − 现期量；基期量 = 现期量 ÷ (1−r)',
+   solve:'城镇基期=15500÷0.97≈15979亿元；下降量=15979−15500≈479亿元，选C。',
+   traps:[
+    {o:'D', why:'直接用现期15500×3%≈465取510，未先还原基期再作差。'},
+    {o:'B', why:'基期还原后估算偏低（如按15900−15500=400→450），落在B。'},
+    {o:'A', why:'把城镇误当整体（18000×2.5%≈450）或截位误差，明显偏低。'}],
+   key:'下降量=基期−现期，先除以(1−3%)还原基期；D选项是“现期直接乘”干扰。'},
+  {q:'2022年，P市乡村消费品零售额占零售总额的比重，与上年相比（ ）', opts:['A. 上升','B. 下降','C. 不变','D. 无法判断'], ans:'A', point:'混合增长率',
+   formula:'混合增长率介于两部分增速之间；整体增速 −2.5% 介于城镇 −3.0% 与乡村增速之间 ⇒ 乡村增速 ＞ −2.5%',
+   solve:'整体−2.5%介于城镇−3.0%与乡村r之间，且−3.0%＜−2.5%，故乡村增速r＞−2.5%（下降更慢甚至可能增长）。乡村跑得比整体快，占比上升，选A。',
+   traps:[
+    {o:'B', why:'只看到“整体在下降”就判断乡村占比也下降，忽略乡村实际降速更慢。'},
+    {o:'D', why:'以为必须知道乡村具体增速才能判断，实际用混合增长率“居中”原理即可定性。'},
+    {o:'C', why:'把整体−2.5%与城镇−3.0%混同，误以为两部分同速。'}],
+   key:'混合增长率定性：整体增速必然夹在城镇与乡村之间，乡村r＞−2.5%＞城镇，故乡村占比升。'},
+  {q:'2021年，P市城镇消费品零售额约是乡村消费品零售额的（ ）倍', opts:['A. 5.8','B. 6.1','C. 6.4','D. 6.7'], ans:'C', point:'基期倍数',
+   formula:'基期倍数 = 城镇基期量 ÷ 乡村基期量',
+   solve:'城镇基期=15500÷0.97≈15979亿元；乡村基期=整体基期−城镇基期=18462−15979≈2483亿元；15979÷2483≈6.4倍，选C。',
+   traps:[
+    {o:'A', why:'直接用现期倍数15500÷2500=6.2，误以为“现期≈基期”未还原，且截位偏低到5.8。'},
+    {o:'D', why:'城镇基期估算偏高或乡村基期取小（如按2300），抬到6.7。'},
+    {o:'B', why:'截位误差（15979÷2600≈6.1），分母取大。'}],
+   key:'基期倍数要求城镇、乡村都还原到2021年；乡村基期用“整体−城镇”间接求得。'},
+ ]
+},
+];
+
+/* ================= 考点体系（25个考点全覆盖） ================= */
+const POINTS = ['现期量','基期量','增长量','增长量比较','增长率','增长率比较','百分点','隔年增长率','年均增长率','年均增长量','混合增长率','拉动增长与贡献率','现期比重','基期比重','两期比重','比重变化判断','现期平均数','基期平均数','平均数增长率','平均数增长量','现期倍数','基期倍数','基期量和差','和差计算','读数与排序比较'];
+
+/* ================= 状态 ================= */
+const S = {
+  srcZhen:true, srcGaib:true,          // 来源筛选
+  num:10,                              // 每组题量
+  points:new Set(POINTS),              // 考点筛选
+  session:[],                          // 当前组 [{mi, qi, chosen, uncertain}]
+  timer:null, secs:0, label:'',
+  quizMeta:''
+};
+const $ = id => document.getElementById(id);
+const LS_KEY='zlfx_stats_v1';
+const fmt = n => { const s=String(n); return s.length<2?'0'+s:s; };
+
+/* ================= 题库工具 ================= */
+const allQuestions = () => RAW.flatMap((m,mi)=>m.qs.map((q,qi)=>({mi,qi,m,q})));
+const filterQuestions = () => allQuestions().filter(x =>
+  (S.srcZhen && x.m.type==='zhen' || S.srcGaib && x.m.type==='gaib') &&
+  S.points.has(x.q.point));
+const qKey = (mi,qi)=>RAW[mi].id+'#'+qi;
+
+/* 洗牌（Fisher-Yates） */
+function shuffle(arr){ const a=arr.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+
+/* ================= 设置页渲染 ================= */
+function srcInfo(){
+  const z=RAW.filter(m=>m.type==='zhen').reduce((s,m)=>s+m.qs.length,0);
+  const g=RAW.filter(m=>m.type==='gaib').reduce((s,m)=>s+m.qs.length,0);
+  $('srcZhenInfo').textContent = '含 '+z+' 题：2023国考行政执法 4篇、2018国考副省、2018联考等';
+  $('srcGaibInfo').textContent = '含 '+g+' 题：改编自真题素材 + 真题化专项设计';
+  return {z,g};
+}
+function renderSetup(){
+  srcInfo();
+  /* 来源 */
+  $('srcZhenOpts').innerHTML = `<label class="opt ${S.srcZhen?'sel':''}"><input type="checkbox" ${S.srcZhen?'checked':''} onchange="S.srcZhen=this.checked;renderSetup()">使用历年真题</label>`;
+  $('srcGaibOpts').innerHTML = `<label class="opt ${S.srcGaib?'sel':''}"><input type="checkbox" ${S.srcGaib?'checked':''} onchange="S.srcGaib=this.checked;renderSetup()">使用真题化训练</label>`;
+  /* 题量 */
+  $('numOpts').innerHTML = [5,10,15,20,0].map(n=>`<label class="opt ${S.num===n?'sel':''}"><input type="radio" name="num" ${S.num===n?'checked':''} onchange="S.num=${n};renderSetup()">${n===0?'全部题目':n+' 题/组'}</label>`).join('');
+  /* 考点 */
+  $('pointOpts').innerHTML = POINTS.map(p=>`<label class="point-item ${S.points.has(p)?'sel':''}"><input type="checkbox" ${S.points.has(p)?'checked':''} onchange="togglePoint('${p}',this.checked)">${p}</label>`).join('');
+  const list=filterQuestions();
+  $('sumN').textContent = S.points.size;
+  $('sumQ').textContent = list.length;
+  $('btnStart').disabled = list.length===0;
+}
+function togglePoint(p,on){ on?S.points.add(p):S.points.delete(p); renderSetup(); }
+const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+
+/* ================= 材料渲染 ================= */
+function renderMaterial(m){
+  let html='';
+  m.blocks.forEach(b=>{
+    html += `<div style="margin-top:${b.t?'8px':'0'}"><div class="m-title" style="margin-bottom:6px">${esc(b.t)}</div>`;
+    if(b.chart==='bars'){
+      const vs=b.items.map(i=>i.v), vmax=Math.max(...vs)*1.12;
+      html += `<div class="chart-fig">`+b.items.map((i,idx)=>{
+        const h=Math.max(14,Math.round(i.v/vmax*130));
+        return `<div class="col"><div class="v">${i.v}万吨</div><div class="bar ${idx===b.items.length-1?'hl':''}" style="height:${h}px"></div><div class="v" style="font-size:10px">${i.e}亿美元</div><div class="k">${i.k}</div></div>`;
+      }).join('')+`</div>
+      <div style="font-size:11.5px;color:var(--sub)">柱形为进口量（万吨），下方数字为进口额（亿美元）。</div>`;
+    }
+    if(b.chart==='pie'){
+      let acc=0; const segs=[];
+      b.items.forEach(it=>{
+        const from=acc/b.total*100, to=(acc+it[1])/b.total*100;
+        const col=['#1e3a5f','#f97316','#2f5c8f','#94a3b8','#fb923c'][segs.length%5];
+        segs.push({it,col,from,to}); acc+=it[1];
+      });
+      const css=segs.map(s=>`${s.col} ${s.from}% ${s.to}%`).join(',');
+      html += `<div style="display:flex;gap:18px;align-items:center;flex-wrap:wrap">
+        <div style="width:150px;height:150px;border-radius:50%;background:conic-gradient(${css});flex:0 0 auto"></div>
+        <div style="flex:1;min-width:170px">`+segs.map(s=>`<div style="display:flex;align-items:center;gap:7px;font-size:12.5px;margin:3px 0"><span style="width:11px;height:11px;border-radius:3px;background:${s.col};display:inline-block"></span>${s.it[0]}（${s.it[1]}万吨，占${(s.it[1]/b.total*100).toFixed(1)}%）</div>`).join('')+`</div></div>`;
+    }
+    if(b.head){
+      const colW = Math.floor(100/(b.head.length));
+      html += `<div style="overflow-x:auto;margin:8px 0"><table class="data"><colgroup>`+b.head.map(()=>`<col style="width:${colW}%">`).join('')+`</colgroup><thead><tr>`+b.head.map(h=>`<th>${esc(h)}</th>`).join('')+`</tr></thead><tbody>`;
+      b.rows.forEach(r=> html += `<tr>`+r.map((c,ci)=>ci===0?`<td class="rowhead">${esc(c)}</td>`:`<td>${esc(c)}</td>`).join('')+`</tr>`);
+      html += `</tbody></table></div>`;
+    }
+    if(b.text){
+      html += `<div class="m-body">`+b.text.split('\n\n').map(p=>`<p>${esc(p)}</p>`).join('')+`</div>`;
+    }
+    html += `</div>`;
+  });
+  const srcBadge = m.type==='zhen' ? '<span class="badge zhen">历年真题</span>' : '<span class="badge gaib">真题改编 · 真题化</span>';
+  return `<div class="material-box"><div class="m-title">${srcBadge} ${esc(m.title)}</div>
+    <div class="m-src">来源：${esc(m.source)}</div>`+html+
+    (m.note?`<div class="m-note">${esc(m.note)}</div>`:'')+`</div>`;
+}
+
+/* ================= 抽题：随机分组 ================= */
+function startQuiz(label, srcList){
+  /* srcList: [{mi,qi}] 指定题集；否则按设置筛选 */
+  const pool = srcList ? srcList : filterQuestions().map(x=>({mi:x.mi,qi:x.qi}));
+  if(!pool.length){ modal('没有符合条件的题目','请调整来源或考点筛选后重试'); return; }
+  const picked = srcList ? shuffle(pool) : shuffle(pool).slice(0, S.num===0?pool.length:S.num);
+  /* 按材料首次出现顺序分组 */
+  const order=[]; const seen={};
+  picked.forEach(p=>{ if(!seen[p.mi]){ seen[p.mi]=1; order.push(p.mi);} });
+  S.session = order.flatMap(mi=> picked.filter(p=>p.mi===mi).map(p=>({mi,qi:p.qi,chosen:null,uncertain:false})));
+  S.label=label||'随机分组练习';
+  S.secs=0; clearInterval(S.timer);
+  S.timer=setInterval(()=>{ S.secs++; $('timer').textContent=fmt(Math.floor(S.secs/60))+':'+fmt(S.secs%60); },1000);
+  showView('quiz');
+  $('quizLabel').textContent = label||'第 '+(getHist().history.length+1)+' 组';
+  $('quizMeta').textContent = S.session.length+' 题 · '+srcLabel();
+  renderQuiz();
+}
+function srcLabel(){
+  const z=S.session.filter(s=>RAW[s.mi].type==='zhen').length;
+  const g=S.session.filter(s=>RAW[s.mi].type==='gaib').length;
+  return `真题 ${z} 题 · 真题化 ${g} 题`;
+}
+function renderQuiz(){
+  const body=$('quizBody'); let html=''; let shown={};
+  S.session.forEach((s,idx)=>{
+    const m=RAW[s.mi], q=m.qs[s.qi];
+    if(!shown[s.mi]){ html+=renderMaterial(m); shown[s.mi]=1; }
+    html += renderQuestion(s,idx,q);
+  });
+  body.innerHTML=html;
+  $('progBar').style.width = '0%';
+  $('submitHint').textContent = '共 '+S.session.length+' 题，请全部作答后交卷';
+}
+function renderQuestion(s,idx,q){
+  const letters=['A','B','C','D'];
+  return `<div class="q-card">
+    <div class="q-head"><div class="q-num">${idx+1}</div><div>
+      <div class="q-text">${esc(q.q)}</div>
+      <div class="q-point"><span class="badge point">${esc(q.point)}</span></div>
+    </div></div>
+    <div class="options">`+q.opts.map((o,i)=>{
+      const chosen = s.chosen===letters[i];
+      return `<label class="option ${chosen?'chosen':''}">
+        <input type="radio" name="q${idx}" value="${letters[i]}" ${chosen?'checked':''} onchange="choose(${idx},'${letters[i]}')">
+        <span><span class="k">${letters[i]}.</span> ${esc(o.replace(/^[A-D]\.\s*/,''))}</span>
+      </label>`;
+    }).join('')+`</div>
+    <div class="uncertain-row"><label style="display:flex;align-items:center;gap:5px;cursor:pointer">
+      <input type="checkbox" ${s.uncertain?'checked':''} onchange="markUncertain(${idx},this.checked)"> 这道题拿不准（标记后不参与成绩激励）</label></div>
+  </div>`;
+}
+function choose(idx,val){ S.session[idx].chosen=val; renderQuiz(); }
+function markUncertain(idx,on){ S.session[idx].uncertain=on; renderQuiz(); }
+
+/* ================= 交卷判分 ================= */
+function submitQuiz(){
+  const unanswered = S.session.filter(s=>!s.chosen);
+  if(unanswered.length){
+    const sure = S.session.filter(s=>!s.chosen && !s.uncertain);
+    const msg = sure.length? `还有 ${sure.length} 题未作答（另有 ${unanswered.length-sure.length} 题标记拿不准），可继续作答后再交卷` : `有 ${unanswered.length} 题标记了拿不准，可继续作答后再交卷`;
+    modal('尚未全部作答', msg);
+    return;
+  }
+  clearInterval(S.timer);
+  let right=0, wrong=0, unc=0; const detail=[];
+  S.session.forEach(s=>{
+    const q=RAW[s.mi].qs[s.qi];
+    const ok = s.chosen===q.ans;
+    if(s.uncertain){ unc++; }
+    if(ok) right++; else wrong++;
+    detail.push({key:qKey(s.mi,s.qi), point:q.point, correct:ok, uncertain:s.uncertain, chosen:s.chosen, ans:q.ans});
+    if(!ok) addWrongBook(qKey(s.mi,s.qi), RAW[s.mi].id);
+  });
+  const total=S.session.length;
+  const acc=total? Math.round(right/total*100):0;
+  const secs=S.secs;
+  const hist=getHist();
+  hist.history.unshift({time:Date.now(), label:S.label, total, right, wrong, unc, acc, secs, detail});
+  saveHist(hist);
+  showResult({total,right,wrong,unc,acc,secs,detail});
+}
+/* ================= 结果页 ================= */
+function showResult(r){
+  showView('result');
+  const deg = Math.round(r.acc/100*360);
+  $('scoreRing').style.background = `conic-gradient(${r.acc>=80?'var(--green)':r.acc>=60?'var(--amber)':'var(--red)'} ${deg}deg,var(--line) ${deg}deg)`;
+  $('scoreNum').textContent = r.acc;
+  $('statRight').textContent = r.right;
+  $('statWrong').textContent = r.wrong;
+  $('statTime').textContent = fmt(Math.floor(r.secs/60))+':'+fmt(r.secs%60);
+  $('statAcc').textContent = r.acc+'%';
+  $('statUnc').textContent = r.unc;
+  const pts=new Set(r.detail.map(d=>d.point));
+  $('statPts').textContent = pts.size;
+  $('resultMsg').textContent = r.acc>=85?'优秀！考点掌握扎实，可挑战更高题量':r.acc>=70?'良好，错题已收录，建议看解析后重练':r.acc>=50?'继续加油，重点复盘错题的命题陷阱':'基础待补，建议先看解析中的公式与命题人视角';
+  let html='';
+  const letters=['A','B','C','D'];
+  S.session.forEach((s,idx)=>{
+    const m=RAW[s.mi], q=m.qs[s.qi];
+    const ok=s.chosen===q.ans;
+    const srcBadge = m.type==='zhen'?'<span class="badge zhen">历年真题</span>':'<span class="badge gaib">真题化</span>';
+    html += `<div class="q-card">
+      <div class="q-head"><div class="q-num">${idx+1}</div><div>
+        <div class="q-text">${srcBadge} ${esc(q.q)}</div>
+        <div class="q-point"><span class="badge point">${esc(q.point)}</span>${s.uncertain?'<span class="badge" style="background:#fffbeb;color:var(--amber);border:1px solid #fde68a">标记拿不准</span>':''}</div>
+      </div></div>
+      <div class="options">`+q.opts.map((o,i)=>{
+        const L=letters[i];
+        let cls='';
+        if(L===q.ans) cls='correct';
+        else if(L===s.chosen) cls='wrong';
+        const flag = L===q.ans?'<span class="flag ok">正确答案</span>':(L===s.chosen?'<span class="flag no">你的答案</span>':'');
+        return `<div class="option ${cls}"><span><span class="k">${L}.</span> ${esc(o.replace(/^[A-D]\.\s*/,''))}</span>${flag}</div>`;
+      }).join('')+`</div>
+      <div class="explain-box">
+        <div class="ans-line ${ok?'ok':'no'}">${ok?'✓ 回答正确':'✗ 回答错误'}：正确答案 ${q.ans}${!ok?'，你的答案 '+(s.chosen||'未选'):''}</div>
+        <div class="formula">公式/方法：${esc(q.formula)}</div>
+        <div class="detail"><b>解析：</b>${esc(q.solve)}</div>
+        <div class="detail" style="margin-top:8px;border-top:1px dashed #cbd5e1;padding-top:8px">
+          <b style="color:var(--blue)">命题人视角 · 干扰项设计</b>
+          <ul style="margin:6px 0 0 0;padding-left:18px">`+
+          q.traps.map(t=>`<li style="margin:3px 0"><b>${t.o} 选项</b>：${esc(t.why)}</li>`).join('')+`</ul>
+          <div style="margin-top:6px"><b>解题关键：</b>${esc(q.key)}</div>
+        </div>
+      </div>
+    </div>`;
+  });
+  $('resultDetail').innerHTML = html;
+  window.scrollTo(0,0);
+}
+
+/* ================= 本地存储（练习记录 + 错题本） ================= */
+function getHist(){
+  try{ const h=JSON.parse(localStorage.getItem(LS_KEY)||'{"history":[],"wrongBook":{}}');
+    if(!h.history) h.history=[]; if(!h.wrongBook) h.wrongBook={}; return h; }catch(e){ return {history:[],wrongBook:{}}; }
+}
+function saveHist(h){ localStorage.setItem(LS_KEY, JSON.stringify(h)); }
+function addWrongBook(key, mid){
+  const h=getHist();
+  const rec=h.wrongBook[key]||{key, mid, times:0, last:0};
+  rec.times++; rec.last=Date.now();
+  h.wrongBook[key]=rec; saveHist(h);
+}
+function removeWrong(key){
+  const h=getHist(); delete h.wrongBook[key]; saveHist(h); renderWrong();
+}
+
+/* ================= 考点图谱 ================= */
+function pointStats(){
+  const bank={}, done={};
+  POINTS.forEach(p=>{ bank[p]=0; done[p]=0; });
+  RAW.forEach(m=>m.qs.forEach(q=>{ bank[q.point]=(bank[q.point]||0)+1; }));
+  const h=getHist();
+  h.history.forEach(r=>r.detail.forEach(d=>{ done[d.point]=(done[d.point]||0)+1; }));
+  return {bank, done};
+}
+function renderAtlas(){
+  const h=getHist();
+  const {bank,done}=pointStats();
+  const accMap={}; const cntMap={};
+  h.history.forEach(r=>r.detail.forEach(d=>{
+    if(d.uncertain) return;
+    cntMap[d.point]=(cntMap[d.point]||0)+1;
+    accMap[d.point]=(accMap[d.point]||0)+(d.correct?1:0);
+  }));
+  let html='';
+  const covered=[]; let notYet=0;
+  POINTS.forEach(p=>{
+    const cnt=cntMap[p]||0, acc=cnt?Math.round(accMap[p]/cnt*100):null;
+    const status = acc===null?'未练':acc>=80?'强':acc>=50?'中':'弱';
+    const color = acc===null?'#cbd5e1':acc>=80?'var(--green)':acc>=50?'var(--amber)':'var(--red)';
+    if(acc!==null) covered.push({p,acc,status});
+    else notYet++;
+    const barHtml = acc===null
+      ? '<span style="font-size:12px;color:var(--sub)">—</span>'
+      : `<div class="bar-cell"><div class="bar"><i class="${acc>=80?'green':acc>=50?'':'red'}" style="width:${acc}%"></i></div><div style="font-size:11px;color:var(--sub);margin-top:2px">${acc}%</div></div>`;
+    const tagHtml = acc===null?'<span class="badge" style="background:#f1f5f9;color:#94a3b8">未练</span>'
+      : acc>=80?'<span class="badge" style="background:#f0fdf4;color:var(--green);border:1px solid #86efac">已掌握</span>'
+      : acc>=50?'<span class="badge" style="background:#fffbeb;color:var(--amber);border:1px solid #fde68a">待加强</span>'
+      : '<span class="badge" style="background:#fef2f2;color:var(--red);border:1px solid #fca5a5">薄弱</span>';
+    html += `<tr><td class="pname">${p}</td><td>${bank[p]||0}</td><td>${cnt}</td><td>${barHtml}</td><td>${tagHtml}</td></tr>`;
+  });
+  $('kpBody').innerHTML=html;
+  const chips=POINTS.map(p=>{
+    const acc=accMap[p]!==undefined&&cntMap[p]?Math.round((accMap[p]||0)/(cntMap[p]||1)*100):null;
+    const cls = acc===null?'none':acc>=80?'done':acc>=50?'':'weak';
+    return `<span class="chip ${cls}">${p}${acc!==null?' · '+acc+'%':''}</span>`;
+  }).join('');
+  $('coverAll').innerHTML=chips;
+  $('kpNote').textContent = `题库覆盖全部 ${POINTS.length} 个考点（共 ${RAW.reduce((s,m)=>s+m.qs.length,0)} 题）；累计答题 ${h.history.reduce((s,r)=>s+r.total,0)} 题次 · 尚未练习考点 ${notYet} 个 · 数据来自本机练习记录`;
+}
+
+/* ================= 统计页 ================= */
+function renderStats(){
+  const h=getHist();
+  const list=h.history;
+  $('stTotal').textContent=list.length;
+  $('stQ').textContent=list.reduce((s,r)=>s+r.total,0);
+  const accAll=list.length?Math.round(list.reduce((s,r)=>s+r.acc,0)/list.length):0;
+  $('stAcc').textContent=accAll+'%';
+  const wrongKeys=Object.keys(h.wrongBook).length;
+  $('stWrongN').textContent=wrongKeys;
+  const accMap={},cntMap={};
+  list.forEach(r=>r.detail.forEach(d=>{
+    if(d.uncertain) return;
+    cntMap[d.point]=(cntMap[d.point]||0)+1;
+    accMap[d.point]=(accMap[d.point]||0)+(d.correct?1:0);
+  }));
+  $('kpAccBody').innerHTML = POINTS.map(p=>{
+    const cnt=cntMap[p]||0, acc=cnt?Math.round(accMap[p]/cnt*100):null;
+    return `<tr><td class="pname">${p}</td><td>${acc===null?'—':acc+'%'}</td>
+      <td><div class="bar-cell"><div class="bar"><i style="width:${acc||0}%;background:${acc===null?'#e2e8f0':acc>=80?'var(--green)':acc>=50?'var(--amber)':'var(--red)'}"></i></div><div style="font-size:11px;color:var(--sub);margin-top:2px">${cnt} 题次</div></div></td></tr>`;
+  }).join('');
+  $('histList').innerHTML = list.length? list.map((r,i)=>{
+    const d=new Date(r.time);
+    const timeStr = `${d.getMonth()+1}月${d.getDate()}日 ${fmt(d.getHours())}:${fmt(d.getMinutes())}`;
+    const scoreCls = r.acc>=80?'hi':r.acc>=50?'':'lo';
+    return `<li><span class="when">${timeStr}</span>
+      <span class="score ${scoreCls}">${r.acc}%</span>
+      <span class="bar"><i style="width:${r.acc}%"></i></span>
+      <span style="color:var(--sub);font-size:12px">${r.right}/${r.total} 对</span>
+      <span class="tag">${esc(r.label)}</span></li>`;
+  }).join('') : '<li class="empty-tip" style="border:none">暂无练习记录，去「开始练习」随机来一组吧</li>';
+}
+
+/* ================= 错题本 ================= */
+function renderWrong(){
+  const h=getHist();
+  const keys=Object.keys(h.wrongBook);
+  $('wrongCount').textContent=keys.length;
+  if(!keys.length){ $('wrongList').innerHTML='<div class="empty-tip">暂无错题，继续保持</div>'; $('btnRetrain').style.display='none'; return; }
+  $('btnRetrain').style.display='';
+  let html='';
+  keys.forEach(k=>{
+    const [mid,qi]=k.split('#');
+    const m=RAW.find(x=>x.id===mid); if(!m) return;
+    const q=m.qs[+qi]; const rec=h.wrongBook[k];
+    const letters=['A','B','C','D'];
+    html += `<div class="w-item">
+      <div class="w-top">
+        <span class="w-q">${esc(q.q)}</span>
+        <span class="w-meta">错 ${rec.times} 次 · ${esc(m.title.slice(0,18))}</span>
+      </div>
+      <div class="w-meta">考点：${esc(q.point)} · 正确答案 ${q.ans}：${esc(q.opts[letters.indexOf(q.ans)].replace(/^[A-D]\.\s*/,''))}</div>
+      <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap">
+        <button class="btn btn-ghost" style="padding:6px 12px;font-size:12.5px" onclick="retrainOne('${k}')">练这道</button>
+        <button class="btn btn-ghost" style="padding:6px 12px;font-size:12.5px" onclick="showWrongExplain('${k}')">看解析</button>
+        <button class="btn btn-ghost" style="padding:6px 12px;font-size:12.5px" onclick="removeWrong('${k}')">移除</button>
+      </div>
+    </div>`;
+  });
+  $('wrongList').innerHTML=html;
+}
+function retrainOne(k){
+  const [mid,qi]=k.split('#');
+  const mi=RAW.findIndex(x=>x.id===mid);
+  startQuiz('错题重练',[{mi,qi:Number(qi)}]);
+}
+function showWrongExplain(k){
+  const [mid,qi]=k.split('#');
+  const m=RAW.find(x=>x.id===mid), q=m.qs[+qi];
+  modal('题目解析', `<div style="text-align:left;font-size:13px">
+    <div style="font-weight:700;margin-bottom:6px">${esc(q.q)}</div>
+    <div style="background:#f1f5f9;border-radius:8px;padding:8px 10px;margin:6px 0"><b>正确答案 ${q.ans}。</b>${esc(q.solve)}</div>
+    <div style="color:var(--blue);font-weight:700;margin:8px 0 4px">命题人视角 · 干扰项</div>`+
+    q.traps.map(t=>`<div style="margin:3px 0">${t.o}：${esc(t.why)}</div>`).join('')+`
+    <div style="margin-top:8px;color:var(--sub)">解题关键：${esc(q.key)}</div></div>`);
+}
+
+/* ================= 视图切换与初始化 ================= */
+function showView(v){
+  ['setup','quiz','result','atlas','stats','wrong'].forEach(x=>{
+    $('view-'+x).classList.toggle('show', x===v);
+  });
+  document.querySelectorAll('#nav button').forEach(b=>b.classList.toggle('active', b.dataset.view===v));
+  if(v==='atlas') renderAtlas();
+  if(v==='stats') renderStats();
+  if(v==='wrong') renderWrong();
+  window.scrollTo(0,0);
+}
+document.querySelectorAll('#nav button').forEach(b=>{
+  b.addEventListener('click',()=>{
+    if(b.dataset.view==='quiz' && S.session.length) { modal('练习进行中','当前组尚未交卷，返回后计时会继续。可在练习页点击「放弃本组」。'); return; }
+    showView(b.dataset.view);
+  });
+});
+$('btnStart').addEventListener('click',()=>{
+  const label='第 '+(getHist().history.length+1)+' 组';
+  startQuiz(label);
+});
+$('btnAgain').addEventListener('click',()=>{
+  const label='第 '+(getHist().history.length+1)+' 组';
+  startQuiz(label);
+});
+$('btnNewSet').addEventListener('click',()=>{ if(S.session.length && !confirm('返回设置页将放弃当前组？')) return; S.session=[]; clearInterval(S.timer); showView('setup'); });
+$('btnBack').addEventListener('click',()=>{ if(confirm('确定放弃本组练习？')){ S.session=[]; clearInterval(S.timer); showView('setup'); } });
+$('btnSubmit').addEventListener('click',submitQuiz);
+$('btnExport').addEventListener('click',()=>{
+  const h=getHist();
+  const blob=new Blob([JSON.stringify(h,null,2)],{type:'application/json'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='资料分析练习成绩_'+new Date().toISOString().slice(0,10)+'.json';
+  a.click();
+});
+$('btnClearHist').addEventListener('click',()=>{
+  if(confirm('确定清空全部练习记录与错题本？此操作不可恢复。')){
+    localStorage.removeItem(LS_KEY); renderStats(); renderWrong();
+  }
+});
+$('btnRetrain').addEventListener('click',()=>{
+  const h=getHist(); const keys=Object.keys(h.wrongBook);
+  const src=keys.map(k=>{ const [mid,qi]=k.split('#'); return {mi:RAW.findIndex(x=>x.id===mid),qi:Number(qi)}; }).filter(x=>x.mi>=0);
+  if(src.length) startQuiz('错题重练', src);
+});
+/* 弹窗 */
+function modal(title, body){
+  $('modalTitle').textContent=title;
+  $('modalBody').innerHTML=body||'';
+  $('modal').classList.add('show');
+}
+$('modalOk').addEventListener('click',()=>$('modal').classList.remove('show'));
+$('modal').addEventListener('click',e=>{ if(e.target===$('modal')) $('modal').classList.remove('show'); });
+
+/* ================= 命题人视角 · 出题规律卡片（固定知识模块） ================= */
+const TRAP_RULES = [
+  {t:'时间陷阱', d:'问基期给现期数据、问2019年却用2021年数据；把“比上年”与“较某年”混为一谈。对策：读题先圈时间词。'},
+  {t:'单位陷阱', d:'万吨与亿吨、亿美元与万美元、公斤与吨、%与‰；进出口“数量与金额”单位不同。对策：列式前统一单位。'},
+  {t:'概念偷换', d:'增长量与增长率、百分点与百分数、现期倍数与基期倍数、现期比重与基期比重。对策：背熟每个概念的“分母是谁”。'},
+  {t:'比重方向', d:'判断比重升降只需比较“部分增速 vs 整体增速”，但选项常给“无法判断”或用具体数值诱导你硬算。'},
+  {t:'间隔漏项', d:'间隔增长率= r₁+r₂+r₁×r₂，交叉项 r₁×r₂ 约1~3个百分点，选项里必有一个“漏交叉项”的答案。'},
+  {t:'估算陷阱', d:'化除为乘方向反（该除却乘）、截位方向偏、把“超过某值”判断成“接近某值”。对策：先定性后定量，选项区间边界重点核对。'}
+];
+function renderTrapCard(){
+  $('view-setup').insertAdjacentHTML('beforeend', `
+  <div class="card">
+    <h2><span class="bar"></span>命题人视角 · 资料分析干扰项设计六大规律</h2>
+    <p style="font-size:13px;color:var(--sub);margin-bottom:12px">本工具的每一道题都标注了“命题人视角”：告诉你每个错误选项是怎么埋的。先记住命题人的通用套路，做题时逐条对照。</p>
+    <table class="kp-table">
+      <colgroup><col style="width:16%"><col style="width:84%"></colgroup>
+      <tbody>`+
+      TRAP_RULES.map(r=>`<tr><td class="pname">${r.t}</td><td style="color:#33415c">${r.d}</td></tr>`).join('')+`
+      </tbody>
+    </table>
+  </div>`);
+}
+
+/* ================= 启动 ================= */
+renderSetup();
+renderTrapCard();
+$('footQ').textContent = RAW.reduce((s,m)=>s+m.qs.length,0);
+$('footP').textContent = POINTS.length;
+renderAtlas();
+</script>
+</body>
+</html>
