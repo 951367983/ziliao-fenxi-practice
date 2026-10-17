@@ -22,6 +22,10 @@
 
 直接用浏览器打开 `资料分析真题练习.html` 即可（双击或拖入浏览器），无需安装任何环境。
 
+## 在线访问
+
+已部署至 GitHub Pages：**https://951367983.github.io/ziliao-fenxi-practice/**（手机、电脑浏览器均可直接打开使用）。
+
 ## 部署到 GitHub Pages
 
 1. 在 GitHub 新建一个仓库（如 `ziliao-fenxi-practice`），**不要勾选**「Add a README」以免冲突。
